@@ -14,7 +14,8 @@
     "*.{js,tsx,vue,ts,jsx}": "eslint --fix"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@mistjs/eslint-config-vue": "^0.0.5",

@@ -15,7 +15,7 @@ export default defineConfig({
     vue(),
     AutoImport({
       // 配置需要自动导入的库
-      imports: ['vue'],
+      imports: ['vue', 'vue-router'],
       // 生成类型文件的地址
       dts: 'types/auto-imports.d.ts',
     }),
