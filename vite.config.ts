@@ -8,16 +8,21 @@ import Components from 'unplugin-vue-components/vite'
 export default defineConfig({
   resolve: {
     alias: {
-      '~': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('src', import.meta.url)),
     },
   },
   plugins: [
     vue(),
     AutoImport({
       // 配置需要自动导入的库
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', 'vue-router', 'pinia'],
       // 生成类型文件的地址
       dts: 'types/auto-imports.d.ts',
+      // 配置本地需要自动导入的库
+      dirs: [
+        // pinia状态管理目录
+        'src/stores',
+      ],
     }),
     Components({
       // 生成类型文件的地址

@@ -1,8 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const countStore = useCount()
+
+const { double } = storeToRefs(countStore)
+</script>
 
 <template>
   <div>
-    <HelloWorld msg="Vite + Vue" />
+    值：{{ double }}
+    Work Page
   </div>
 </template>
 
