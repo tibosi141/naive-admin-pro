@@ -27,7 +27,11 @@
       "~/*": [
         "src/*"
       ]
-    }
+    },
+    /* Type */
+    "types": [
+      "naive-ui/volar"
+    ]
   },
   "include": [
     "src/**/*.ts",

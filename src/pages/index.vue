@@ -6,14 +6,14 @@ const { count } = storeToRefs(countStore)
 
 <template>
   <div>
-    值：{{ count }}
-    <button @click="countStore.increment">
-      增加
-    </button>
-    <button @click="countStore.decrement">
+    <h1>Home Page</h1>
+    <p>值：{{ count }}</p>
+    <n-button strong secondary type="error" @click="countStore.decrement">
       减少
-    </button>
-    Home Page
+    </n-button>
+    <n-button strong secondary type="info" @click="countStore.increment">
+      增加
+    </n-button>
   </div>
 </template>
 
