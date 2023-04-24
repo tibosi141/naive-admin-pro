@@ -36,7 +36,9 @@ const onLoading = () => {
 
 <template>
   <div>
-    <h1>Work Page</h1>
+    <h1 class="p-12px text-center border-b">
+      Work Page
+    </h1>
     <n-button @click="onDialog">
       Dialog
     </n-button>

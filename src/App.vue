@@ -3,7 +3,7 @@
 <template>
   <n-config-provider>
     <app-provider>
-      <nav>
+      <nav class="flex justify-evenly">
         <router-link to="/">
           go to home
         </router-link>

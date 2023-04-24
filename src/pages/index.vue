@@ -6,7 +6,9 @@ const { count } = storeToRefs(countStore)
 
 <template>
   <div>
-    <h1>Home Page</h1>
+    <h1 class="p-12px text-center border-b">
+      Home Page
+    </h1>
     <p>值：{{ count }}</p>
     <n-button strong secondary type="error" @click="countStore.decrement">
       减少
