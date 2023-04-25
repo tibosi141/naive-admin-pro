@@ -23,7 +23,12 @@ export default defineConfig({
         'pinia',
         '@vueuse/core',
         {
-          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+          ],
         },
       ],
       // 生成类型文件的地址
