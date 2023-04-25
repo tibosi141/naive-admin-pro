@@ -21,6 +21,7 @@ export default defineConfig({
         'vue',
         'vue-router',
         'pinia',
+        '@vueuse/core',
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
         },
@@ -31,6 +32,8 @@ export default defineConfig({
       dirs: [
         // pinia状态管理目录
         'src/stores',
+        // 自定义组合式api目录
+        'src/composables',
       ],
     }),
     Components({
