@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LayoutContent, LayoutSider, Logo, Title } from '../common'
+import { LayoutBase, LayoutContent, LayoutSider, Logo, Title } from '../common'
 
 const props = withDefaults(
   defineProps<{
@@ -17,6 +17,7 @@ const props = withDefaults(
     siderWidth: 240,
     siderCollapsedWidth: 48,
     inverted: true,
+    collapsed: false,
   },
 )
 
@@ -29,27 +30,32 @@ const headerHeightVar = computed(() => `${props.headerHeight}px`)
   <n-layout has-sider class="h-screen">
     <LayoutSider
       :width="siderWidth"
+      :collapsed="collapsed"
       :collapsed-width="siderCollapsedWidth"
       :show-trigger="showSiderTrigger"
       :inverted="inverted"
       @update:collapsed="$emit('update:collapsed', $event)"
     >
       <div class="mt-24px flex items-center justify-center">
-        <Logo size="30" :src="logo" />
-        <Title v-if="!collapsed" size="22" :title="title" />
+        <Logo :src="logo" size="30" />
+        <Title v-if="!collapsed" :title="title" size="22" />
       </div>
     </LayoutSider>
-    <n-layout style="--n-color: var(--pro-admin-layout-content-bg)">
+    <LayoutBase>
       <n-layout-header
         class="pro-admin-side-layout-header px-4 flex items-center justify-between"
       >
-        <slot name="headerLeft" />
-        <slot name="headerRight" />
+        <slot name="headerLeft">
+          <div>左侧插槽</div>
+        </slot>
+        <slot name="headerRight">
+          <div>右侧插槽</div>
+        </slot>
       </n-layout-header>
       <LayoutContent content-style="padding: 24px;">
         <slot />
       </LayoutContent>
-    </n-layout>
+    </LayoutBase>
   </n-layout>
 </template>
 

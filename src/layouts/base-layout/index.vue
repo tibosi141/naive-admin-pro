@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MixLayout from '../mix-layout/index.vue'
 import SideLayout from '../side-layout/index.vue'
+import TopLayout from '../top-layout/index.vue'
 
 const appStore = useAppStore()
 const { layout } = storeToRefs(appStore)
@@ -55,6 +56,24 @@ const { layout } = storeToRefs(appStore)
       </template>
       <router-view />
     </SideLayout>
+    <TopLayout
+      v-if="layout.layout === 'top'"
+      :logo="layout.logo"
+      :title="layout.title"
+    >
+      <template #headerRight>
+        <nav class="flex gap-5">
+          <router-link to="/">
+            go to home
+          </router-link>
+          |
+          <router-link to="/workspace">
+            go to work
+          </router-link>
+        </nav>
+      </template>
+      <router-view />
+    </TopLayout>
   </div>
 </template>
 

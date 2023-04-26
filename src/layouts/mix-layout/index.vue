@@ -15,6 +15,7 @@ const props = withDefaults(
     headerHeight: 48,
     siderWidth: 240,
     siderCollapsedWidth: 48,
+    collapsed: false,
   },
 )
 
@@ -30,17 +31,18 @@ const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
       inverted
       class="pro-admin-mix-layout-header px-4 flex items-center justify-between"
     >
-      <div>
+      <div class="flex items-center">
         <Logo :src="logo" />
         <Title :title="title" />
       </div>
-      <div>
-        <slot name="headerRight" />
-      </div>
+      <slot name="headerRight">
+        <div>右侧插槽</div>
+      </slot>
     </n-layout-header>
     <n-layout has-sider class="pro-admin-mix-layout-content">
       <LayoutSider
         :width="siderWidth"
+        :collapsed="collapsed"
         :collapsed-width="siderCollapsedWidth"
         :show-trigger="showSiderTrigger"
         @update:collapsed="$emit('update:collapsed', $event)"
