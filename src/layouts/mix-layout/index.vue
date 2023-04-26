@@ -9,6 +9,7 @@ const props = withDefaults(
     siderWidth?: number
     siderCollapsedWidth?: number
     showSiderTrigger?: boolean | 'bar' | 'arrow-circle'
+    collapsed?: boolean
   }>(),
   {
     headerHeight: 48,
@@ -16,6 +17,8 @@ const props = withDefaults(
     siderCollapsedWidth: 48,
   },
 )
+
+defineEmits(['update:collapsed'])
 
 const headerHeightVar = computed(() => `${props.headerHeight}px`)
 const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
@@ -35,15 +38,12 @@ const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
         <slot name="headerRight" />
       </div>
     </n-layout-header>
-    <n-layout
-      has-sider
-      class="pro-admin-mix-layout-content"
-    >
+    <n-layout has-sider class="pro-admin-mix-layout-content">
       <LayoutSider
         :width="siderWidth"
         :collapsed-width="siderCollapsedWidth"
         :show-trigger="showSiderTrigger"
-        content-style="padding: 24px;"
+        @update:collapsed="$emit('update:collapsed', $event)"
       >
         sider
       </LayoutSider>

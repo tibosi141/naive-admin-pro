@@ -8,6 +8,7 @@ export interface LayoutTheme {
   siderWidth: number
   siderCollapsedWidth: number
   showSiderTrigger: boolean | 'bar' | 'arrow-circle'
+  collapsed: boolean
 }
 
 export const layoutThemeConfig: LayoutTheme = {
@@ -18,4 +19,5 @@ export const layoutThemeConfig: LayoutTheme = {
   siderWidth: 240,
   siderCollapsedWidth: 48,
   showSiderTrigger: 'bar',
+  collapsed: false,
 }
