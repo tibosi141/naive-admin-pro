@@ -14,8 +14,6 @@ const props = withDefaults(
   },
 )
 
-defineEmits(['update:collapsed'])
-
 const headerHeightVar = computed(() => `${props.headerHeight}px`)
 </script>
 
