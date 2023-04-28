@@ -1,18 +1,37 @@
 <script setup lang="ts">
 import { CloseOutlined, SettingOutlined } from '@vicons/antd'
+import Container from './container.vue'
+import CheckboxLayout from './checkbox-layout.vue'
 
 const props = withDefaults(
   defineProps<{
     floatTop?: number | string
     drawerWidth?: number | string
+    layout?: 'mix' | 'side' | 'top'
   }>(),
   {
     floatTop: 240,
     drawerWidth: 300,
+    layout: 'mix',
   },
 )
+defineEmits(['update:layout'])
 
 const show = ref(false)
+const layouts = ref([
+  {
+    key: 'mix',
+    title: '混合布局',
+  },
+  {
+    key: 'side',
+    title: '侧边布局',
+  },
+  {
+    key: 'top',
+    title: '顶部布局',
+  },
+])
 
 const cssVars = computed(() => {
   return {
@@ -50,8 +69,19 @@ const onHide = () => {
     </div>
   </teleport>
   <n-drawer v-model:show="show" :width="drawerWidth">
-    <n-drawer-content title="斯通纳">
-      《斯通纳》是美国作家约翰·威廉姆斯在 1965 年出版的小说。
+    <n-drawer-content>
+      <Container title="导航模式">
+        <n-space size="large">
+          <template v-for="item in layouts" :key="item.key">
+            <CheckboxLayout
+              :title="item.title"
+              :layout="item.key"
+              :checkout="item.key === layout"
+              @click="$emit('update:layout', item.key)"
+            />
+          </template>
+        </n-space>
+      </Container>
     </n-drawer-content>
     <div
       :style="cssVars"
