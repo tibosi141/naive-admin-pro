@@ -6,7 +6,7 @@ const props = withDefaults(
   defineProps<{
     layout?: 'mix' | 'side' | 'top'
     inverted?: boolean
-    checkout?: true
+    checkout?: boolean
     title?: string | (() => VNodeChild)
   }>(),
   {
@@ -16,29 +16,29 @@ const props = withDefaults(
 defineEmits(['click'])
 
 const headerClass = computed(() => {
-  const classList: string[] = []
+  const list: string[] = []
 
   if (props.layout === 'mix' || props.layout === 'top')
-    classList.push('bg-[var(--inverted-color)]')
-  if (props.layout === 'side') classList.push('bg-[var(--base-color)]')
+    list.push('bg-[var(--inverted-color)]')
+  if (props.layout === 'side') list.push('bg-[var(--base-color)]')
 
-  return classList
+  return list
 })
 
 const siderClass = computed(() => {
-  const classList: string[] = []
+  const list: string[] = []
 
   if (props.layout === 'mix')
-    classList.push('h-75%', 'bottom-0', 'bg-[var(--base-color)]')
+    list.push('h-75%', 'bottom-0', 'bg-[var(--base-color)]')
 
   if (props.layout === 'side') {
-    classList.push(
+    list.push(
       'h-100%',
       `bg-[var(--${props.inverted ? 'inverted' : 'base'}-color)]`,
     )
   }
 
-  return classList
+  return list
 })
 </script>
 

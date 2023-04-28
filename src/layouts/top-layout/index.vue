@@ -10,7 +10,7 @@ const props = withDefaults(
   }>(),
   {
     headerHeight: 48,
-    inverted: true,
+    inverted: false,
   },
 )
 

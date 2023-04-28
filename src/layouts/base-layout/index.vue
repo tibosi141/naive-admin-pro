@@ -6,16 +6,13 @@ import MobileLayout from '../mobile-layout/index.vue'
 import SettingDrawer from '../setting-drawer/index.vue'
 
 const appStore = useAppStore()
-const { layout, visible } = storeToRefs(appStore)
+const { layout, visible, layoutList, layoutStyleList } = storeToRefs(appStore)
 const { isMobile, isDesktop, isPad } = useQueryBreakpoints()
 
 watchEffect(() => {
-  if (isDesktop.value)
-    appStore.updateCollapsed(false)
-  else if (isPad.value)
-    appStore.updateCollapsed(true)
-  else if (isMobile.value)
-    appStore.updateVisible(false)
+  if (isDesktop.value) appStore.toggleCollapsed(false)
+  else if (isPad.value) appStore.toggleCollapsed(true)
+  else if (isMobile.value) appStore.toggleVisible(false)
 })
 </script>
 
@@ -67,6 +64,7 @@ watchEffect(() => {
       v-model:collapsed="layout.collapsed"
       :logo="layout.logo"
       :title="layout.title"
+      :inverted="layout.layoutStyle === 'inverted'"
       :show-sider-trigger="layout.showSiderTrigger"
       :sider-width="layout.siderWidth"
       :sider-collapsed-width="layout.siderCollapsedWidth"
@@ -91,6 +89,7 @@ watchEffect(() => {
       v-if="layout.layout === 'top'"
       :logo="layout.logo"
       :title="layout.title"
+      :inverted="layout.layoutStyle === 'inverted'"
     >
       <template #headerRight>
         <nav class="flex gap-5">
@@ -106,7 +105,12 @@ watchEffect(() => {
       <router-view />
     </TopLayout>
   </template>
-  <SettingDrawer v-model:layout="layout.layout" />
+  <SettingDrawer
+    v-model:layout="layout.layout"
+    v-model:layout-style="layout.layoutStyle"
+    :layout-list="layoutList"
+    :layout-style-list="layoutStyleList"
+  />
 </template>
 
 <style scoped></style>

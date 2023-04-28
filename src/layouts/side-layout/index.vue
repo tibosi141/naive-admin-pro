@@ -16,7 +16,7 @@ const props = withDefaults(
     headerHeight: 48,
     siderWidth: 240,
     siderCollapsedWidth: 48,
-    inverted: true,
+    inverted: false,
     collapsed: false,
   },
 )
