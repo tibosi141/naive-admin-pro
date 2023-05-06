@@ -2,7 +2,9 @@
 import { CloseOutlined, SettingOutlined } from '@vicons/antd'
 import Container from './container.vue'
 import CheckboxLayout from './checkbox-layout.vue'
+import CheckboxTheme from './checkbox-colors.vue'
 import type { LayoutType } from '~/config/layout-theme'
+import type { ThemeType } from '~/config/themt'
 
 const props = withDefaults(
   defineProps<{
@@ -12,13 +14,15 @@ const props = withDefaults(
     layoutStyle?: 'light' | 'inverted'
     layoutList?: LayoutType[]
     layoutStyleList?: LayoutType[]
+    theme?: string
+    themeList?: ThemeType[]
   }>(),
   {
     floatTop: 240,
     drawerWidth: 300,
   },
 )
-defineEmits(['update:layout', 'update:layoutStyle'])
+defineEmits(['update:layout', 'update:layoutStyle', 'update:theme'])
 
 const show = ref(false)
 
@@ -68,6 +72,17 @@ const cssVars = computed(() => {
               @click="$emit('update:layoutStyle', item.id)"
             />
           </template>
+        </n-space>
+      </Container>
+      <Container v-if="themeList" title="主题色配置">
+        <n-space>
+          <CheckboxTheme
+            v-for="item in themeList"
+            :key="item.key"
+            :color="item.color"
+            :checked="item.key === theme"
+            @click="$emit('update:theme', item.key)"
+          />
         </n-space>
       </Container>
       <Container v-if="layoutList" title="导航模式">

@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import type { LayoutTheme } from '~/config/layout-theme'
-
 const appStore = useAppStore()
 
-const onSwitch = (theme: LayoutTheme['layoutStyle']) => {
-  if (theme === 'dark')
-    document.documentElement.classList.add('dark')
-  else
-    document.documentElement.classList.remove('dark')
+const { themeList } = storeToRefs(appStore)
 
-  appStore.updateLayoutStyle(theme)
+const onSwitch = (theme: string) => {
+  appStore.updateTheme(theme)
 }
 </script>
 
@@ -19,11 +14,13 @@ const onSwitch = (theme: LayoutTheme['layoutStyle']) => {
       Home Page
     </h1>
     <n-space size="large">
-      <n-button @click="onSwitch('light')">
-        亮色
-      </n-button>
-      <n-button @click="onSwitch('dark')">
-        暗色
+      <n-button
+        v-for="item in themeList"
+        :key="item.key"
+        type="primary"
+        @click="onSwitch(item.key)"
+      >
+        {{ item.key }}
       </n-button>
     </n-space>
   </div>

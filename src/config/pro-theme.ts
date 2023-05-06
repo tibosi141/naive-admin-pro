@@ -1,6 +1,4 @@
 import { merge } from 'lodash-es'
-
-import type { GlobalTheme } from 'naive-ui'
 import {
   cardDark,
   drawerDark,
@@ -10,6 +8,8 @@ import {
   menuDark,
   darkTheme as naiveDarkTheme,
 } from 'naive-ui'
+import type { GlobalTheme } from 'naive-ui'
+
 const commonColor: Record<string, any> = {
   bgColor: '#242525',
 }

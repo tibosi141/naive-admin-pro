@@ -18,6 +18,7 @@ export interface LayoutTheme {
   siderCollapsedWidth: number
   showSiderTrigger: boolean | 'bar' | 'arrow-circle'
   collapsed: boolean
+  theme: string
 }
 
 export const layoutThemeConfig: LayoutTheme = {
@@ -30,4 +31,5 @@ export const layoutThemeConfig: LayoutTheme = {
   siderCollapsedWidth: 48,
   showSiderTrigger: 'bar',
   collapsed: false,
+  theme: 'default',
 }
