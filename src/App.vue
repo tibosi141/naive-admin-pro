@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const appStore = useAppStore()
+const { layoutTheme } = storeToRefs(appStore)
+
+useAutoDark()
+</script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :theme="layoutTheme">
     <app-provider>
       <router-view />
     </app-provider>

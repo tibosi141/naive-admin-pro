@@ -1,21 +1,31 @@
 <script setup lang="ts">
-const countStore = useCount()
+import type { LayoutTheme } from '~/config/layout-theme'
 
-const { count } = storeToRefs(countStore)
+const appStore = useAppStore()
+
+const onSwitch = (theme: LayoutTheme['layoutStyle']) => {
+  if (theme === 'dark')
+    document.documentElement.classList.add('dark')
+  else
+    document.documentElement.classList.remove('dark')
+
+  appStore.updateLayoutStyle(theme)
+}
 </script>
 
 <template>
   <div>
-    <h1 class="p-12px text-center border-b">
+    <h1 class="mb-24px p-12px text-center border-b">
       Home Page
     </h1>
-    <p>值：{{ count }}</p>
-    <n-button strong secondary type="error" @click="countStore.decrement">
-      减少
-    </n-button>
-    <n-button strong secondary type="info" @click="countStore.increment">
-      增加
-    </n-button>
+    <n-space size="large">
+      <n-button @click="onSwitch('light')">
+        亮色
+      </n-button>
+      <n-button @click="onSwitch('dark')">
+        暗色
+      </n-button>
+    </n-space>
   </div>
 </template>
 

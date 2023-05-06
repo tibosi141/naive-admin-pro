@@ -63,6 +63,7 @@ const cssVars = computed(() => {
               :title="item.title"
               :layout="item.key"
               :inverted="item.inverted"
+              :dark="item.dark"
               :checkout="item.id === layoutStyle"
               @click="$emit('update:layoutStyle', item.id)"
             />

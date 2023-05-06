@@ -5,6 +5,7 @@ export interface LayoutType {
   key: 'mix' | 'side' | 'top'
   title: string
   inverted?: boolean
+  dark?: boolean
 }
 
 export interface LayoutTheme {

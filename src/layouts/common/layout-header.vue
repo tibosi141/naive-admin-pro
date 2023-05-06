@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <n-layout-sider class="pro-admin-layout-sider" collapse-mode="width">
+  <n-layout-header class="pro-admin-layout-header" collapse-mode="width">
     <slot />
-  </n-layout-sider>
+  </n-layout-header>
 </template>
 
 <style scoped></style>

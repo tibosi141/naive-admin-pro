@@ -1,1 +1,2 @@
-@import './vars.css'
+@import url(./vars.css);
+@import url(./custom.css);
