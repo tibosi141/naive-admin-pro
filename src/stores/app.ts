@@ -34,19 +34,19 @@ const useAppStore = defineStore('app', () => {
   const layoutList = computed<LayoutType[]>(() => {
     return [
       {
+        id: 'mix',
+        key: 'mix',
+        title: 'global.layout.setting.drawer.layout.mix',
+      },
+      {
         id: 'side',
         key: 'side',
-        title: '侧边布局',
+        title: 'global.layout.setting.drawer.layout.side',
       },
       {
         id: 'top',
         key: 'top',
-        title: '顶部布局',
-      },
-      {
-        id: 'mix',
-        key: 'mix',
-        title: '混合布局',
+        title: 'global.layout.setting.drawer.layout.top',
       },
     ]
   })
@@ -56,7 +56,7 @@ const useAppStore = defineStore('app', () => {
       {
         id: 'light',
         key: 'side',
-        title: '亮色风格',
+        title: 'global.layout.setting.drawer.style.light',
       },
     ]
 
@@ -64,7 +64,7 @@ const useAppStore = defineStore('app', () => {
       list.push({
         id: 'inverted',
         key: 'side',
-        title: '反转色风格',
+        title: 'global.layout.setting.drawer.style.inverted',
         inverted: true,
       })
     }
@@ -75,7 +75,7 @@ const useAppStore = defineStore('app', () => {
     list.push({
       id: 'dark',
       key: 'side',
-      title: '暗色风格',
+      title: 'global.layout.setting.drawer.style.dark',
       dark: true,
     })
 
@@ -102,6 +102,7 @@ const useAppStore = defineStore('app', () => {
       list.push({
         color: value.common?.primaryColor as string,
         key,
+        title: `global.layout.setting.drawer.theme.${key}`,
       })
     }
 

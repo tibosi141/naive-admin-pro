@@ -17,7 +17,7 @@ const onSwitch = (lang: string) => {
         中文
       </n-button>
       <n-button type="primary" @click="onSwitch('en-US')">
-        英文
+        English
       </n-button>
     </n-space>
   </div>

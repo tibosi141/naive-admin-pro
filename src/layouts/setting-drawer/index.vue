@@ -11,7 +11,7 @@ const props = withDefaults(
     floatTop?: number | string
     drawerWidth?: number | string
     layout?: 'mix' | 'side' | 'top'
-    layoutStyle?: 'dark' | 'light' | 'inverted'
+    layoutStyle?: 'light' | 'inverted' | 'dark'
     layoutList?: LayoutType[]
     layoutStyleList?: LayoutType[]
     theme?: string
@@ -60,11 +60,14 @@ const cssVars = computed(() => {
   </teleport>
   <n-drawer v-model:show="show" :width="drawerWidth">
     <n-drawer-content>
-      <Container v-if="layoutStyleList" title="布局风格配置">
+      <Container
+        v-if="layoutStyleList"
+        :title="$t('global.layout.setting.drawer.style')"
+      >
         <n-space size="large">
           <template v-for="item in layoutStyleList" :key="item.id">
             <CheckboxLayout
-              :title="item.title"
+              :title="$t(item.title)"
               :layout="item.key"
               :inverted="item.inverted"
               :dark="item.dark"
@@ -74,23 +77,30 @@ const cssVars = computed(() => {
           </template>
         </n-space>
       </Container>
-      <Container v-if="themeList" title="主题色配置">
+      <Container
+        v-if="themeList"
+        :title="$t('global.layout.setting.drawer.theme')"
+      >
         <n-space>
-          <CheckboxTheme
-            v-for="item in themeList"
-            :key="item.key"
-            :color="item.color"
-            :checked="item.key === theme"
-            @click="$emit('update:theme', item.key)"
-          />
+          <template v-for="item in themeList" :key="item.key">
+            <CheckboxTheme
+              :title="$t(item.title)"
+              :color="item.color"
+              :checked="item.key === theme"
+              @click="$emit('update:theme', item.key)"
+            />
+          </template>
         </n-space>
       </Container>
       <n-divider />
-      <Container v-if="layoutList" title="导航模式">
+      <Container
+        v-if="layoutList"
+        :title="$t('global.layout.setting.drawer.layout')"
+      >
         <n-space size="large">
           <template v-for="item in layoutList" :key="item.id">
             <CheckboxLayout
-              :title="item.title"
+              :title="$t(item.title)"
               :layout="item.key"
               :checkout="item.key === layout"
               @click="$emit('update:layout', item.key)"
