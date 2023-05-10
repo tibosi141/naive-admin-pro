@@ -11,7 +11,7 @@ const props = withDefaults(
     floatTop?: number | string
     drawerWidth?: number | string
     layout?: 'mix' | 'side' | 'top'
-    layoutStyle?: 'light' | 'inverted'
+    layoutStyle?: 'dark' | 'light' | 'inverted'
     layoutList?: LayoutType[]
     layoutStyleList?: LayoutType[]
     theme?: string
@@ -85,6 +85,7 @@ const cssVars = computed(() => {
           />
         </n-space>
       </Container>
+      <n-divider />
       <Container v-if="layoutList" title="导航模式">
         <n-space size="large">
           <template v-for="item in layoutList" :key="item.id">

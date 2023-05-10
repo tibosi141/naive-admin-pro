@@ -1,10 +1,8 @@
 <script setup lang="ts">
-const appStore = useAppStore()
+const appLocale = useAppLocale()
 
-const { themeList } = storeToRefs(appStore)
-
-const onSwitch = (theme: string) => {
-  appStore.updateTheme(theme)
+const onSwitch = (lang: string) => {
+  appLocale.value = lang
 }
 </script>
 
@@ -14,13 +12,12 @@ const onSwitch = (theme: string) => {
       Home Page
     </h1>
     <n-space size="large">
-      <n-button
-        v-for="item in themeList"
-        :key="item.key"
-        type="primary"
-        @click="onSwitch(item.key)"
-      >
-        {{ item.key }}
+      <n-input />
+      <n-button type="primary" @click="onSwitch('zh-CN')">
+        中文
+      </n-button>
+      <n-button type="primary" @click="onSwitch('en-US')">
+        英文
       </n-button>
     </n-space>
   </div>

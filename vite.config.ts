@@ -8,6 +8,10 @@ import Unocss from 'unocss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    __VUE_I18N_FULL_INSTALL__: false,
+    __VUE_I18N_LEGACY_API__: false,
+  },
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('src', import.meta.url)),
@@ -22,6 +26,7 @@ export default defineConfig({
         'vue-router',
         'pinia',
         '@vueuse/core',
+        'vue-i18n',
         {
           'naive-ui': [
             'useDialog',
