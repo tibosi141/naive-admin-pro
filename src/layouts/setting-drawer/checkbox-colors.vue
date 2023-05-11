@@ -6,6 +6,7 @@ defineProps<{
   checked?: boolean
   title?: string
 }>()
+defineEmits(['click'])
 </script>
 
 <template>
@@ -14,13 +15,14 @@ defineProps<{
       <div
         :style="{ backgroundColor: color }"
         class="w-20px h-20px flex items-center justify-center cursor-pointer"
+        @click="$emit('click')"
       >
         <n-icon v-if="checked" size="16">
           <CheckOutlined />
         </n-icon>
       </div>
     </template>
-    <span>{{ title }}</span>
+    {{ title }}
   </n-tooltip>
 </template>
 
