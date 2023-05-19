@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -7,10 +7,24 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
 
 // https://vitejs.dev/config/
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
   const baseUrl = fileURLToPath(new URL('./src', import.meta.url))
 
   return {
+    server: {
+      open: true,
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
+          target: env.VITE_APP_BASE_URL,
+          changeOrigin: true,
+          ws: false,
+          rewrite: (path) => {
+            return path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '')
+          },
+        },
+      },
+    },
     define: {
       __VUE_I18N_FULL_INSTALL__: false,
       __VUE_I18N_LEGACY_API__: false,

@@ -5,7 +5,6 @@ import type {
   InternalAxiosRequestConfig,
 } from 'axios'
 import axios from 'axios'
-import { STORE_AUTHORIZE_KEY } from '~/composables/authorization'
 import i18n from '~/locale'
 import router from '~/routes'
 
@@ -16,7 +15,7 @@ interface ResponseBody<T> {
 }
 
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL ?? '/',
+  baseURL: import.meta.env.VITE_APP_BASE_API ?? '/',
   timeout: 6000,
 })
 
@@ -95,9 +94,9 @@ instance.interceptors.response.use(responseHandler, errorHandler)
 
 export default instance
 
-export const useGet = <T = any, R = any>(
+export const useGet = <P = any, R = any>(
   url: string,
-  params?: T,
+  params?: P,
   config?: AxiosRequestConfig,
 ): Promise<ResponseBody<R>> => {
   return instance.request({
@@ -107,9 +106,10 @@ export const useGet = <T = any, R = any>(
     ...config,
   })
 }
-export const usePost = <T = any, R = any>(
+
+export const usePost = <P = any, R = any>(
   url: string,
-  data?: T,
+  data?: P,
   config?: AxiosRequestConfig,
 ): Promise<ResponseBody<R>> => {
   return instance.request({
@@ -120,9 +120,9 @@ export const usePost = <T = any, R = any>(
   })
 }
 
-export const usePut = <T = any, R = any>(
+export const usePut = <P = any, R = any>(
   url: string,
-  data?: T,
+  data?: P,
   config?: AxiosRequestConfig,
 ): Promise<ResponseBody<R>> => {
   return instance.request({
@@ -133,9 +133,9 @@ export const usePut = <T = any, R = any>(
   })
 }
 
-export const useDelete = <T = any, R = any>(
+export const useDelete = <P = any, R = any>(
   url: string,
-  data?: T,
+  data?: P,
   config?: AxiosRequestConfig,
 ): Promise<ResponseBody<R>> => {
   return instance.request({
