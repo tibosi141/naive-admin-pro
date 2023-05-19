@@ -5,10 +5,21 @@ import {
   MobileOutlined,
   UserOutlined,
 } from '@vicons/antd'
-import { useAccountlogin } from './composables/account-login'
+import { useAccountLogin } from './composables/account-login'
+import { useMobileLogin } from './composables/mobile-login'
 import { BlankLayout } from '~/layouts'
 
-const { formRef, model, rules, loading, login } = useAccountlogin()
+const { formRef, loading, model, rules, login } = useAccountLogin()
+const {
+  mFormRef,
+  mLoading,
+  counter,
+  countState,
+  mModel,
+  mRules,
+  sendCode,
+  mLogin,
+} = useMobileLogin()
 </script>
 
 <template>
@@ -83,17 +94,27 @@ const { formRef, model, rules, loading, login } = useAccountlogin()
           </n-button>
         </n-tab-pane>
         <n-tab-pane name="mobile" :tab="$t('login.mobile.tab')">
-          <n-form label-align="left" label-placement="left">
-            <n-form-item-row>
-              <n-input :placeholder="$t('login.mobile.placeholder')">
+          <n-form
+            ref="mFormRef"
+            :model="mModel"
+            :rules="mRules"
+            label-align="left"
+            label-placement="left"
+          >
+            <n-form-item-row path="mobile">
+              <n-input
+                v-model:value="mModel.mobile"
+                :placeholder="$t('login.mobile.placeholder')"
+              >
                 <template #prefix>
                   <n-icon :component="MobileOutlined" />
                 </template>
               </n-input>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="code">
               <n-input-group>
                 <n-input
+                  v-model:value="mModel.code"
                   :placeholder="
                     $t('login.mobile.verification-code.placeholder')
                   "
@@ -102,16 +123,25 @@ const { formRef, model, rules, loading, login } = useAccountlogin()
                     <n-icon :component="LockOutlined" />
                   </template>
                 </n-input>
-                <n-button type="primary" ghost>
+                <n-button
+                  type="primary"
+                  :disabled="countState"
+                  ghost
+                  @click="sendCode"
+                >
                   {{
-                    $t('login.mobile.verification-code.get-verification-code')
+                    countState
+                      ? `${counter}s${$t('login.mobile.resend')}`
+                      : $t(
+                        'login.mobile.verification-code.get-verification-code',
+                      )
                   }}
                 </n-button>
               </n-input-group>
             </n-form-item-row>
             <n-form-item-row>
               <div class="w-100% flex items-center justify-between">
-                <n-checkbox>
+                <n-checkbox v-model:checked="mModel.rememberMe">
                   {{ $t('login.remember-me') }}
                 </n-checkbox>
                 <a class="cursor-pointer text-[var(--primary-color)]">
@@ -120,7 +150,14 @@ const { formRef, model, rules, loading, login } = useAccountlogin()
               </div>
             </n-form-item-row>
           </n-form>
-          <n-button type="primary" block secondary strong>
+          <n-button
+            type="primary"
+            :loading="mLoading"
+            block
+            secondary
+            strong
+            @click="mLogin"
+          >
             {{ $t('login.login') }}
           </n-button>
         </n-tab-pane>

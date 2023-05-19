@@ -15,6 +15,8 @@ export default {
   'login.mobile.verification-code.placeholder': '验证码',
   'login.mobile.verification-code.required': '请输入验证码！',
   'login.mobile.verification-code.get-verification-code': '获取验证码',
+  'login.mobile.verification-code.success': '验证码发送成功！',
+  'login.mobile.verification-code.loading': '验证码发送中...',
   'login.mobile.resend': '重新获取',
   'login.remember-me': '七天免登录',
   'login.forgot-password': '忘记密码',

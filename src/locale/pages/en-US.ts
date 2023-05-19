@@ -14,6 +14,8 @@ export default {
   'login.mobile.verification-code.required': 'Please enter the verification code!',
   'login.mobile.verification-code.rule': 'The verification code format is incorrect!',
   'login.mobile.verification-code.get-verification-code': 'Get code',
+  'login.mobile.verification-code.success': 'Verification code sent successfully!',
+  'login.mobile.verification-code.loading': 'Sending verification code...',
   'login.mobile.resend': 'Resend',
   'login.remember-me': 'Remember me',
   'login.forgot-password': 'Forgot your password?',

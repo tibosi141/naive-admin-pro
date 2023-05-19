@@ -1,7 +1,7 @@
 import type { FormInst, FormRules } from 'naive-ui'
 import type { UserAccountLoginParams } from '~/apis/user'
 
-export const useAccountlogin = () => {
+export const useAccountLogin = () => {
   const { t } = useI18n()
   const userStore = useUserStore()
   const router = useRouter()

@@ -25,7 +25,7 @@ export interface UserAccountLoginParams {
 
 export interface UserMobileLoginParams {
   mobile: IncludeNull<string>
-  captcha: IncludeNull<string>
+  code: IncludeNull<string>
   type: 'mobile'
   rememberMe?: boolean
 }
@@ -41,4 +41,12 @@ export const userLoginApi = (
     UserAccountLoginParams | UserMobileLoginParams,
     UserLoginResult
   >(userLoginUrl, params)
+}
+
+export const userSendCodeUrl = 'user/send-code'
+
+export type UserSendCodeParams = Pick<UserMobileLoginParams, 'mobile'>
+
+export const userSendCodeApi = (params: UserSendCodeParams) => {
+  return usePost<UserSendCodeParams, any>(userSendCodeUrl, params)
 }
