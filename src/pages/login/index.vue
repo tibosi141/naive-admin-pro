@@ -5,16 +5,10 @@ import {
   MobileOutlined,
   UserOutlined,
 } from '@vicons/antd'
+import { useAccountlogin } from './composables/account-login'
 import { BlankLayout } from '~/layouts'
 
-const userStore = useUserStore()
-
-const onLogin = async () => {
-  await userStore.login({
-    username: 'admin',
-    password: '123456',
-  })
-}
+const { formRef, model, rules, loading, login } = useAccountlogin()
 </script>
 
 <template>
@@ -37,16 +31,26 @@ const onLogin = async () => {
         justify-content="space-evenly"
       >
         <n-tab-pane name="account" :tab="$t('login.account.tab')">
-          <n-form label-align="left" label-placement="left">
-            <n-form-item-row>
-              <n-input :placeholder="$t('login.username.placeholder')">
+          <n-form
+            ref="formRef"
+            :model="model"
+            :rules="rules"
+            label-align="left"
+            label-placement="left"
+          >
+            <n-form-item-row path="username">
+              <n-input
+                v-model:value="model.username"
+                :placeholder="$t('login.username.placeholder')"
+              >
                 <template #prefix>
                   <n-icon :component="UserOutlined" />
                 </template>
               </n-input>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="password">
               <n-input
+                v-model:value="model.password"
                 type="password"
                 show-password-on="click"
                 :placeholder="$t('login.password.placeholder')"
@@ -56,9 +60,9 @@ const onLogin = async () => {
                 </template>
               </n-input>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="rememberMe">
               <div class="w-100% flex items-center justify-between">
-                <n-checkbox>
+                <n-checkbox v-model:checked="model.rememberMe">
                   {{ $t('login.remember-me') }}
                 </n-checkbox>
                 <a class="cursor-pointer text-[var(--primary-color)]">
@@ -67,7 +71,14 @@ const onLogin = async () => {
               </div>
             </n-form-item-row>
           </n-form>
-          <n-button type="primary" block secondary strong @click="onLogin">
+          <n-button
+            type="primary"
+            :loading="loading"
+            block
+            secondary
+            strong
+            @click="login"
+          >
             {{ $t('login.login') }}
           </n-button>
         </n-tab-pane>

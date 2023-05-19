@@ -1,3 +1,5 @@
+import type { IncludeNull } from '~/utils/types'
+
 export interface UserInfo {
   id?: string
   username?: string
@@ -15,14 +17,17 @@ export interface UserInfo {
 export const userLoginUrl = '/user/login'
 
 export interface UserAccountLoginParams {
-  username: string
-  password: string
-  captcha?: string
+  username: IncludeNull<string>
+  password: IncludeNull<string>
+  captcha?: IncludeNull<string>
+  rememberMe?: boolean
 }
 
 export interface UserMobileLoginParams {
-  mobile: number | string
-  captcha: string
+  mobile: IncludeNull<string>
+  captcha: IncludeNull<string>
+  type: 'mobile'
+  rememberMe?: boolean
 }
 
 export interface UserLoginResult {
