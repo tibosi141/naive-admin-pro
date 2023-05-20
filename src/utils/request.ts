@@ -53,12 +53,19 @@ const errorHandler = (error: AxiosError): Promise<any> => {
         content: data?.msg || statusText,
         duration: 3000,
       })
-      router.replace('/login').then(() => {
-        /**
-         * 这里处理清空用户信息和token的逻辑，后续扩展
-         */
-        token.value = null
-      })
+
+      /**
+       * 这里处理清空用户信息和token的逻辑，后续扩展
+       */
+      token.value = null
+      router
+        .replace({
+          path: '/login',
+          query: {
+            redirect: router.currentRoute.value.path,
+          },
+        })
+        .then(() => {})
     }
     else if (status === 403) {
       // 资源请求错误

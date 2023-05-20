@@ -4,6 +4,7 @@ import type {
   UserMobileLoginParams,
 } from '~/apis/user'
 import {
+  userGetInfoApi,
   userLoginApi,
 } from '~/apis/user'
 
@@ -28,10 +29,17 @@ export const useUserStore = defineStore('user', () => {
     data?.token && setToken(data.token)
   }
 
+  const getUserInfo = async () => {
+    const { data } = await userGetInfoApi()
+
+    data && setUserInfo(data)
+  }
+
   return {
     token,
     userInfo,
     setUserInfo,
     login,
+    getUserInfo,
   }
 })

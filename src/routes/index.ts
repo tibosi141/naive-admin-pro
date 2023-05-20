@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'Login',
       component: () => import('../pages/login/index.vue'),
     },
+    {
+      path: '/error',
+      name: 'Error',
+      component: () => import('../pages/exception/index.vue'),
+    },
   ],
   history: createWebHistory(import.meta.env.VITE_APP_BASE ?? '/'),
 })

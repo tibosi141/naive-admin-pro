@@ -15,6 +15,8 @@ export interface UserInfo {
 }
 
 export const userLoginUrl = '/user/login'
+export const userSendCodeUrl = 'user/send-code'
+export const userGetInfoUrl = '/user/info'
 
 export interface UserAccountLoginParams {
   username: IncludeNull<string>
@@ -34,6 +36,8 @@ export interface UserLoginResult {
   token: string
 }
 
+export type UserSendCodeParams = Pick<UserMobileLoginParams, 'mobile'>
+
 export const userLoginApi = (
   params: UserAccountLoginParams | UserMobileLoginParams,
 ) => {
@@ -43,10 +47,10 @@ export const userLoginApi = (
   >(userLoginUrl, params)
 }
 
-export const userSendCodeUrl = 'user/send-code'
-
-export type UserSendCodeParams = Pick<UserMobileLoginParams, 'mobile'>
-
 export const userSendCodeApi = (params: UserSendCodeParams) => {
   return usePost<UserSendCodeParams, any>(userSendCodeUrl, params)
+}
+
+export const userGetInfoApi = () => {
+  return useGet<any, UserInfo>(userGetInfoUrl)
 }

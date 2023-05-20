@@ -5,7 +5,7 @@ export default {
   'login.username.placeholder': '用户名: admin',
   'login.username.required': '请输入用户名!',
   'login.username.length': '用户名长度在 5 到 20 个字符',
-  'login.password.placeholder': '密码: admin',
+  'login.password.placeholder': '密码: 123456',
   'login.password.required': '请输入密码！',
   'login.password.length': '密码长度在 5 到 20 个字符',
   'login.mobile.placeholder': '手机号',

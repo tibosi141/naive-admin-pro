@@ -6,6 +6,7 @@ import '@unocss/reset/tailwind.css'
 import './assets/style/index.css'
 import 'uno.css'
 import i18n from './locale'
+import './routes/router-guard'
 
 /**
  * 解决tailwind的样式冲突
