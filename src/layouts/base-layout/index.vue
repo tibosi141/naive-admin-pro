@@ -4,6 +4,7 @@ import SideLayout from '../side-layout/index.vue'
 import TopLayout from '../top-layout/index.vue'
 import MobileLayout from '../mobile-layout/index.vue'
 import SettingDrawer from '../setting-drawer/index.vue'
+import RightContent from './right-content.vue'
 
 const appStore = useAppStore()
 const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
@@ -25,13 +26,7 @@ watchEffect(() => {
   >
     <template #headerRight>
       <nav class="flex gap-5">
-        <router-link to="/">
-          go to home
-        </router-link>
-        |
-        <router-link to="/workspace">
-          go to work
-        </router-link>
+        <RightContent />
       </nav>
     </template>
     <router-view />
@@ -47,15 +42,7 @@ watchEffect(() => {
       :sider-collapsed-width="layout.siderCollapsedWidth"
     >
       <template #headerRight>
-        <nav class="flex gap-5">
-          <router-link to="/">
-            go to home
-          </router-link>
-          |
-          <router-link to="/workspace">
-            go to work
-          </router-link>
-        </nav>
+        <RightContent />
       </template>
       <router-view />
     </MixLayout>
@@ -73,15 +60,7 @@ watchEffect(() => {
         <span>左侧插槽</span>
       </template>
       <template #headerRight>
-        <nav class="flex gap-5">
-          <router-link to="/">
-            go to home
-          </router-link>
-          |
-          <router-link to="/workspace">
-            go to work
-          </router-link>
-        </nav>
+        <RightContent />
       </template>
       <router-view />
     </SideLayout>
@@ -92,15 +71,7 @@ watchEffect(() => {
       :inverted="layout.layoutStyle === 'inverted'"
     >
       <template #headerRight>
-        <nav class="flex gap-5">
-          <router-link to="/">
-            go to home
-          </router-link>
-          |
-          <router-link to="/workspace">
-            go to work
-          </router-link>
-        </nav>
+        <RightContent />
       </template>
       <router-view />
     </TopLayout>

@@ -33,10 +33,15 @@ export const useAutoLocale = () => {
     () => i18n.global.getLocaleMessage(appLocale.value).naiveUI || {},
   )
 
-  watch(appLocale, (newVal) => {
-    if (newVal && newVal !== locale.value)
-      setLanguage(newVal).then(() => {})
-  })
+  watch(
+    appLocale,
+    (newVal) => {
+      if (newVal && newVal !== locale.value) setLanguage(newVal).then(() => {})
+    },
+    {
+      immediate: true,
+    },
+  )
 
   return {
     naiveLocale,
