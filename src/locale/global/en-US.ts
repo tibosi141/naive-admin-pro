@@ -19,6 +19,12 @@ export default {
   'global.layout.setting.drawer.layout.mix': 'Mix menu layout',
   'global.layout.setting.drawer.layout.side': 'Side menu layout',
   'global.layout.setting.drawer.layout.top': 'Top menu layout',
+  // 用户信息多语言配置
+  'global.layout.header.right.logout': 'Logout',
+  'global.layout.header.right.logout.success': 'Logout successfully',
+  'global.layout.header.right.user.setting': 'User Setting',
+  'global.layout.header.right.user.center': 'User Center',
+
   // 请求多语言配置
   'global.request.error.401': 'Login Expired',
   'global.request.error.403': 'Resource Request Error',

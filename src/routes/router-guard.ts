@@ -30,7 +30,7 @@ router.beforeEach(async (to, _, next) => {
   }
   else {
     // 4. 如果存在，那么我们需要判断用户信息是否存在，如果不存在，就去获取用户信息
-    if (!userStore.userInfo.id && !allowRoutes.includes(to.path)) {
+    if (!userStore.userInfo && !allowRoutes.includes(to.path)) {
       try {
         // 5. 如果用户信息不存在，就去获取用户信息
         await userStore.getUserInfo()
