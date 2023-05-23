@@ -5,6 +5,7 @@ import { LoginOutlined, SettingOutlined, UserOutlined } from '@vicons/antd'
 import type { Component } from 'vue'
 import SelectLang from '../select-lang/index.vue'
 import SelectUser from '../select-user/index.vue'
+import Notify from '../notify/index.vue'
 
 const { t } = useI18n()
 const locale = useAppLocale()
@@ -44,6 +45,7 @@ const handleSelect = (key: string) => {
 
 <template>
   <n-space align="center" size="large">
+    <Notify />
     <SelectUser
       :avatar="avatar"
       :nickname="nickname"

@@ -9,7 +9,7 @@ import router from '~/routes'
 
 export const useUserStore = defineStore('user', () => {
   const token = useAuthorization()
-  const userInfo = ref<UserInfo | undefined>(undefined)
+  const userInfo = ref<UserInfo>()
   const { message } = useGlobalConfig()
   const setToken = (val: string | null) => {
     token.value = val
