@@ -1,3 +1,4 @@
+import type { RouteRecordRaw } from 'vue-router'
 import type {
   UserAccountLoginParams,
   UserInfo,
@@ -6,11 +7,14 @@ import type {
 import { userGetInfoApi, userLoginApi } from '~/apis/user'
 import i18n from '~/locale'
 import router from '~/routes'
+import { dynamicRoutes, rootRoute } from '~/routes/dynamic-routes'
 
 export const useUserStore = defineStore('user', () => {
   const token = useAuthorization()
   const userInfo = ref<UserInfo>()
   const { message } = useGlobalConfig()
+  const t = i18n.global.t
+  const routerRecords = ref<RouteRecordRaw[]>()
   const setToken = (val: string | null) => {
     token.value = val
   }
@@ -35,13 +39,23 @@ export const useUserStore = defineStore('user', () => {
   const logout = async () => {
     setToken(null)
     setUserInfo(undefined)
-    message?.success(i18n.global.t('global.layout.header.right.logout.success'))
+    message?.success(t('global.layout.header.right.logout.success'))
     await router.replace({
       path: '/login',
       query: {
         redirect: router.currentRoute.value.path,
       },
     })
+  }
+
+  const generateRoutes = async () => {
+    const currentRoute = {
+      ...rootRoute,
+      children: dynamicRoutes,
+    }
+    routerRecords.value = dynamicRoutes
+
+    return currentRoute
   }
 
   return {
@@ -51,5 +65,6 @@ export const useUserStore = defineStore('user', () => {
     login,
     getUserInfo,
     logout,
+    generateRoutes,
   }
 })

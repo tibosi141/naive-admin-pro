@@ -34,6 +34,18 @@ router.beforeEach(async (to, _, next) => {
       try {
         // 5. 如果用户信息不存在，就去获取用户信息
         await userStore.getUserInfo()
+        // 处理动态路由
+        const currentRoutes = await userStore.generateRoutes()
+        if (currentRoutes) {
+          router.addRoute(currentRoutes)
+          next({
+            ...to,
+            replace: true,
+          })
+
+          return
+        }
+
         // 判断当前页面是不是登录页面，如果是登录页面，就跳转到首页
         if (to.path === loginRoute) {
           // 跳转至首页

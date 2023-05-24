@@ -2,19 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import staticRoutes from './static-routes'
 
 const router = createRouter({
-  routes: [
-    ...staticRoutes,
-    {
-      path: '/login',
-      name: 'Login',
-      component: () => import('../pages/login/index.vue'),
-    },
-    {
-      path: '/error',
-      name: 'Error',
-      component: () => import('../pages/exception/index.vue'),
-    },
-  ],
+  routes: [...staticRoutes],
   history: createWebHistory(import.meta.env.VITE_APP_BASE ?? '/'),
 })
 
