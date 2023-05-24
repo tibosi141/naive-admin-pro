@@ -4,6 +4,7 @@ import SideLayout from '../side-layout/index.vue'
 import TopLayout from '../top-layout/index.vue'
 import MobileLayout from '../mobile-layout/index.vue'
 import SettingDrawer from '../setting-drawer/index.vue'
+import { menuOptions } from '../side-menu/menu-data'
 import RightContent from './right-content.vue'
 
 const appStore = useAppStore()
@@ -40,6 +41,7 @@ watchEffect(() => {
       :show-sider-trigger="layout.showSiderTrigger"
       :sider-width="layout.siderWidth"
       :sider-collapsed-width="layout.siderCollapsedWidth"
+      :options="menuOptions"
     >
       <template #headerRight>
         <RightContent />
