@@ -8,6 +8,7 @@ import { userGetInfoApi, userLoginApi } from '~/apis/user'
 import i18n from '~/locale'
 import router from '~/routes'
 import { dynamicRoutes, rootRoute } from '~/routes/dynamic-routes'
+import { generateRoute } from '~/routes/generate-route'
 
 export const useUserStore = defineStore('user', () => {
   const token = useAuthorization()
@@ -58,6 +59,14 @@ export const useUserStore = defineStore('user', () => {
     return currentRoute
   }
 
+  const generateDynamicRoutes = async () => {
+    const routeData = await generateRoute()
+    if (routeData)
+      routerRecords.value = routeData.children
+
+    return routeData
+  }
+
   return {
     token,
     userInfo,
@@ -66,5 +75,6 @@ export const useUserStore = defineStore('user', () => {
     getUserInfo,
     logout,
     generateRoutes,
+    generateDynamicRoutes,
   }
 })

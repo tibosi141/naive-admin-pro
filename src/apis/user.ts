@@ -14,9 +14,30 @@ export interface UserInfo {
   birthday?: string
 }
 
+export interface MenuInfo {
+  // 主键
+  id: number
+  // 父级id
+  pid?: number
+  // 路由地址
+  path: string
+  name?: string
+  // 重定向地址
+  redirect?: string
+  // 组件路径
+  component?: string
+  // 标题
+  title: string
+  // 图标
+  icon?: string
+  // 是否保活
+  keepAlive?: boolean
+}
+
 export const userLoginUrl = '/user/login'
 export const userSendCodeUrl = 'user/send-code'
 export const userGetInfoUrl = '/user/info'
+export const userMenusUrl = '/user/menus'
 
 export interface UserAccountLoginParams {
   username: IncludeNull<string>
@@ -53,4 +74,8 @@ export const userSendCodeApi = (params: UserSendCodeParams) => {
 
 export const userGetInfoApi = () => {
   return useGet<any, UserInfo>(userGetInfoUrl)
+}
+
+export const userGetMenusApi = () => {
+  return useGet<any, MenuInfo[]>(userMenusUrl)
 }

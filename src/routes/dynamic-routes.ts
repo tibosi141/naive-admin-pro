@@ -3,8 +3,7 @@ import { Layout } from '~/layouts'
 
 export const rootRoute: RouteRecordRaw = {
   path: '/',
-  name: 'Root Route',
-  redirect: '/home',
+  name: 'Default Route',
   component: Layout,
   children: [],
 }
@@ -13,6 +12,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Index',
+    redirect: '/home',
     children: [
       {
         path: '/home',
@@ -27,7 +27,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         name: 'Workspace',
         component: () => import('~/pages/workspace/index.vue'),
         meta: {
-          title: 'Workspace',
+          title: '工作台',
         },
       },
     ],
