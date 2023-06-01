@@ -4,10 +4,12 @@ import SideLayout from '../side-layout/index.vue'
 import TopLayout from '../top-layout/index.vue'
 import MobileLayout from '../mobile-layout/index.vue'
 import SettingDrawer from '../setting-drawer/index.vue'
-import { menuOptions } from '../side-menu/menu-data'
+// import { menuOptions } from '../side-menu/menu-data'
 import RightContent from './right-content.vue'
 
 const appStore = useAppStore()
+const userStore = useUserStore()
+const menuOptions = computed(() => userStore.menusData)
 const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
 const { isMobile, isDesktop, isPad } = useQueryBreakpoints()
 

@@ -8,6 +8,7 @@ import { userGetInfoApi, userLoginApi } from '~/apis/user'
 import i18n from '~/locale'
 import router from '~/routes'
 import { dynamicRoutes, rootRoute } from '~/routes/dynamic-routes'
+import { generateMenu } from '~/routes/generate-menu'
 import { generateRoute } from '~/routes/generate-route'
 
 export const useUserStore = defineStore('user', () => {
@@ -22,6 +23,8 @@ export const useUserStore = defineStore('user', () => {
   const setUserInfo = (info: UserInfo | undefined) => {
     userInfo.value = info
   }
+
+  const menusData = computed(() => generateMenu(routerRecords.value ?? []))
 
   const login = async (
     params: UserAccountLoginParams | UserMobileLoginParams,
@@ -61,8 +64,7 @@ export const useUserStore = defineStore('user', () => {
 
   const generateDynamicRoutes = async () => {
     const routeData = await generateRoute()
-    if (routeData)
-      routerRecords.value = routeData.children
+    if (routeData) routerRecords.value = routeData.children
 
     return routeData
   }
@@ -70,6 +72,7 @@ export const useUserStore = defineStore('user', () => {
   return {
     token,
     userInfo,
+    menusData,
     setUserInfo,
     login,
     getUserInfo,

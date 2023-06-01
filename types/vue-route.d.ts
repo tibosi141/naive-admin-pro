@@ -6,5 +6,6 @@ declare module 'vue-router' {
     pid?: number
     title?: string
     icon?: string
+    target?: '_blank' | '_self' | '_parent' | '_top'
   }
 }
