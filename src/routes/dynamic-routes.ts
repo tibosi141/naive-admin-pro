@@ -5,6 +5,7 @@ export const rootRoute: RouteRecordRaw = {
   path: '/',
   name: 'Default Route',
   component: Layout,
+  redirect: '/dashboard',
   children: [],
 }
 
@@ -20,14 +21,6 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         component: () => import('~/pages/index.vue'),
         meta: {
           title: 'Home',
-        },
-      },
-      {
-        path: '/workspace',
-        name: 'Workspace',
-        component: () => import('~/pages/workspace/index.vue'),
-        meta: {
-          title: '工作台',
         },
       },
     ],
