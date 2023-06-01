@@ -12,6 +12,7 @@ const userStore = useUserStore()
 const menuOptions = computed(() => userStore.menusData)
 const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
 const { isMobile, isDesktop, isPad } = useQueryBreakpoints()
+const { active } = useMenuState()
 
 watchEffect(() => {
   if (isDesktop.value) appStore.toggleCollapsed(false)
@@ -43,6 +44,7 @@ watchEffect(() => {
       :show-sider-trigger="layout.showSiderTrigger"
       :sider-width="layout.siderWidth"
       :sider-collapsed-width="layout.siderCollapsedWidth"
+      :active="active"
       :options="menuOptions"
     >
       <template #headerRight>
