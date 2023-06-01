@@ -24,10 +24,14 @@ export default {
   'global.layout.header.right.logout.success': 'Logout successfully',
   'global.layout.header.right.user.setting': 'User Setting',
   'global.layout.header.right.user.center': 'User Center',
-
   // 请求多语言配置
   'global.request.error.401': 'Login Expired',
   'global.request.error.403': 'Resource Request Error',
   'global.request.error.500': 'Server Error',
   'global.request.error.other': 'System Error',
+  // 侧边栏菜单多语言配置
+  'pages.dashboard.title': 'Dashboard',
+  'pages.dashboard.analysis.title': 'Analysis',
+  'pages.dashboard.workspace.title': 'Workspace',
+  'pages.jump.baidu': 'Jump to Baidu',
 }

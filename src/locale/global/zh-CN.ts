@@ -29,4 +29,9 @@ export default {
   'global.request.error.403': '资源请求错误',
   'global.request.error.500': '服务器错误',
   'global.request.error.other': '系统错误',
+  // 侧边栏菜单多语言配置
+  'pages.dashboard.title': '仪表盘',
+  'pages.dashboard.analysis.title': '分析页',
+  'pages.dashboard.workspace.title': '访问量',
+  'pages.jump.baidu': '跳转百度',
 }

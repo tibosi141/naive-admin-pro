@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios'
 import router from './index'
+import i18n from '~/locale'
 
 export const allowRoutes = ['/404', '/401', '/500', '/403', '/error']
 
@@ -86,6 +87,9 @@ router.afterEach((to) => {
   loadingBar?.finish()
   const appStore = useAppStore()
   const title = to.meta.title
-  if (title) document.title = `${title} - ${appStore.layout.title}`
-  else if (appStore.layout.title) document.title = appStore.layout.title
+  if (title) {
+    const localeTitle = i18n.global.t(title)
+    document.title = `${localeTitle} - ${appStore.layout.title}`
+  }
+  else if (appStore.layout.title) { document.title = appStore.layout.title }
 })
