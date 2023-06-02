@@ -71,7 +71,7 @@ const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
           @update-expanded-keys="$emit('update:expandedKeys', $event)"
         />
       </LayoutSider>
-      <LayoutContent content-style="padding: 24px;">
+      <LayoutContent>
         <slot />
       </LayoutContent>
     </n-layout>

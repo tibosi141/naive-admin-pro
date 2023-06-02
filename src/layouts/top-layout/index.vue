@@ -31,7 +31,7 @@ const headerHeightVar = computed(() => `${props.headerHeight}px`)
         <div>右侧插槽</div>
       </slot>
     </LayoutHeader>
-    <LayoutContent content-style="padding: 24px;">
+    <LayoutContent>
       <slot />
     </LayoutContent>
   </LayoutBase>

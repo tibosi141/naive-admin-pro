@@ -6,6 +6,7 @@ import MobileLayout from '../mobile-layout/index.vue'
 import SettingDrawer from '../setting-drawer/index.vue'
 // import { menuOptions } from '../side-menu/menu-data'
 import RightContent from './right-content.vue'
+import WrapContent from './wrap-content.vue'
 
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -33,7 +34,7 @@ watchEffect(() => {
         <RightContent />
       </nav>
     </template>
-    <router-view />
+    <WrapContent />
   </MobileLayout>
   <template v-else>
     <MixLayout
@@ -50,7 +51,7 @@ watchEffect(() => {
       <template #headerRight>
         <RightContent />
       </template>
-      <router-view />
+      <WrapContent />
     </MixLayout>
     <SideLayout
       v-if="layout.layout === 'side'"
@@ -68,7 +69,7 @@ watchEffect(() => {
       <template #headerRight>
         <RightContent />
       </template>
-      <router-view />
+      <WrapContent />
     </SideLayout>
     <TopLayout
       v-if="layout.layout === 'top'"
@@ -79,7 +80,7 @@ watchEffect(() => {
       <template #headerRight>
         <RightContent />
       </template>
-      <router-view />
+      <WrapContent />
     </TopLayout>
   </template>
   <SettingDrawer
