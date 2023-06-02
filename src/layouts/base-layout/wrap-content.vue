@@ -4,7 +4,9 @@ import MultiTab from '../multi-tab/index.vue'
 
 <template>
   <MultiTab />
-  <router-view />
+  <div class="m-24px">
+    <router-view />
+  </div>
 </template>
 
 <style scoped>
