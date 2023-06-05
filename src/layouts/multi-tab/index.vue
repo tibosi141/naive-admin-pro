@@ -1,13 +1,19 @@
 <script setup lang="ts">
-const name = ref(1)
-const panels = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+import TabItemVue from './tab-item.vue'
+import type { TabItem } from './type'
+import { useMultiTab } from '~/composables/multi-tab-state'
+
+const { tabList, current } = useMultiTab()
+
+const renderTab = (item: TabItem) => {
+  return h(TabItemVue, { item })
+}
 </script>
 
 <template>
   <n-tabs
-    v-model:value="name"
+    :value="current"
     type="card"
-    closable
     tab-style="min-width: 80px;"
     class="pt-8px bg-white dark:bg-transparent"
   >
@@ -18,10 +24,11 @@ const panels = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
       <div class="ml-8px" />
     </template>
     <n-tab-pane
-      v-for="panel in panels"
-      :key="panel"
-      :tab="panel.toString()"
-      :name="panel"
+      v-for="panel in tabList"
+      :key="panel.path"
+      closable
+      :tab="renderTab(panel)"
+      :name="panel.path"
     />
   </n-tabs>
 </template>
