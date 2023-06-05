@@ -13,7 +13,7 @@ const userStore = useUserStore()
 const menuOptions = computed(() => userStore.menusData)
 const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
 const { isMobile, isDesktop, isPad } = useQueryBreakpoints()
-const { active } = useMenuState()
+const { active } = useMenuStateInject()
 
 watchEffect(() => {
   if (isDesktop.value) appStore.toggleCollapsed(false)

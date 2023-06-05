@@ -3,7 +3,7 @@ const appStore = useAppStore()
 const { layoutTheme, overridesTheme } = storeToRefs(appStore)
 useAutoDark()
 const { naiveLocale } = useAutoLocale()
-useProviderMenuState()
+useMenuStateProvider()
 </script>
 
 <template>
