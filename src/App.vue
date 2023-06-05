@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { useMultiTabProvider } from './composables/multi-tab-state'
+
 const appStore = useAppStore()
 const { layoutTheme, overridesTheme } = storeToRefs(appStore)
 useAutoDark()
 const { naiveLocale } = useAutoLocale()
 useMenuStateProvider()
+useMultiTabProvider()
 </script>
 
 <template>
