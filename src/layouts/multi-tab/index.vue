@@ -7,6 +7,11 @@ import type { TabItem } from './type'
 const router = useRouter()
 const { t } = useI18n()
 const { tabList, current, closeTab, refreshTag } = useMultiTab()
+const menuDropdown = reactive({
+  x: 0,
+  y: 0,
+  show: false,
+})
 
 const dropdownOptions = computed<DropdownOption[]>(() => [
   {
@@ -21,8 +26,18 @@ const dropdownOptions = computed<DropdownOption[]>(() => [
   },
 ])
 
+const handleContextMenu = (e: MouseEvent) => {
+  e.preventDefault()
+  menuDropdown.show = false
+  nextTick(() => {
+    menuDropdown.x = e.clientX
+    menuDropdown.y = e.clientY
+    menuDropdown.show = true
+  })
+}
+
 const renderTab = (item: TabItem) => {
-  return h(TabItemVue, { item })
+  return h(TabItemVue, { item, onContextMenu: handleContextMenu })
 }
 
 function handleClose(path: string) {
@@ -36,6 +51,8 @@ const handleChange = (path: string) => {
 const handleMenuChange = (key: string) => {
   key === 'closeCurrent' && closeTab()
   key === 'refreshCurrent' && refreshTag()
+
+  menuDropdown.show = false
 }
 </script>
 
@@ -52,13 +69,13 @@ const handleMenuChange = (key: string) => {
       <div class="ml-8px" />
     </template>
     <template #suffix>
-      <div class="mr-13px">
+      <div class="mr-17px">
         <n-dropdown
           trigger="click"
           :options="dropdownOptions"
           @select="handleMenuChange"
         >
-          <n-icon size="24" class="cursor-pointer">
+          <n-icon size="16" class="cursor-pointer">
             <MoreOutlined />
           </n-icon>
         </n-dropdown>
@@ -72,4 +89,14 @@ const handleMenuChange = (key: string) => {
       :name="item.path"
     />
   </n-tabs>
+  <n-dropdown
+    placement="bottom-start"
+    trigger="manual"
+    :options="dropdownOptions"
+    :x="menuDropdown.x"
+    :y="menuDropdown.y"
+    :show="menuDropdown.show"
+    @select="handleMenuChange"
+    @clickoutside="menuDropdown.show = false"
+  />
 </template>

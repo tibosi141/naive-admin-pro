@@ -2,7 +2,10 @@
 import { ReloadOutlined } from '@vicons/antd'
 import type { TabItem } from './type'
 
-defineProps<{ item: TabItem }>()
+defineProps<{
+  item: TabItem
+  onContextMenu: (e: MouseEvent) => void
+}>()
 
 const { current, refreshTag } = useMultiTab()
 
@@ -12,7 +15,7 @@ const handleRefresh = () => {
 </script>
 
 <template>
-  <span>{{ $t(item.tabTitle!) }}</span>
+  <span @contextmenu="onContextMenu">{{ $t(item.tabTitle!) }}</span>
   <n-icon
     v-if="current === item.path"
     class="ml-2 n-base-close n-tabs-tab__close"
