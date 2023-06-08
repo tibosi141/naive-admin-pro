@@ -12,6 +12,11 @@ const staticRoutes: RouteRecordRaw[] = [
     component: () => import('../pages/exception/error.vue'),
   },
   {
+    path: '/redirect/:path(.*)',
+    name: 'Redirect',
+    component: () => import('~/pages/redirect/index.vue'),
+  },
+  {
     path: '/:pathMatch(.*)',
     component: () => import('~/pages/exception/error.vue'),
   },

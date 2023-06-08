@@ -34,4 +34,8 @@ export default {
   'pages.dashboard.analysis.title': '分析页',
   'pages.dashboard.workspace.title': '访问量',
   'pages.jump.baidu': '跳转百度',
+  // 标签页多语言配置
+  'tabs.menu.close': '关闭当前标签页',
+  'tabs.menu.refresh': '刷新当前页',
+  'tabs.menu.close.failed': '已是最后一个页签',
 }

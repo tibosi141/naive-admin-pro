@@ -34,4 +34,8 @@ export default {
   'pages.dashboard.analysis.title': 'Analysis',
   'pages.dashboard.workspace.title': 'Workspace',
   'pages.jump.baidu': 'Jump to Baidu',
+  // 标签页多语言配置
+  'tabs.menu.close': 'Close the current TAB',
+  'tabs.menu.refresh': 'Refreshing the current page',
+  'tabs.menu.close.failed': 'This is the last TAB',
 }
