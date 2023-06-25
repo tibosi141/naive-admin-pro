@@ -1,4 +1,6 @@
 {
   "extends": "@mistjs/eslint-config-vue",
-  "rules": {}
+  "rules": {
+    "no-console": "off"
+  }
 }

@@ -9,7 +9,7 @@ import i18n from '~/locale'
 import router from '~/routes'
 import { dynamicRoutes, rootRoute } from '~/routes/dynamic-routes'
 import { generateMenu } from '~/routes/generate-menu'
-import { generateRoute } from '~/routes/generate-route'
+import { flatRoutes, generateRoute } from '~/routes/generate-route'
 
 export const useUserStore = defineStore('user', () => {
   const token = useAuthorization()
@@ -53,9 +53,10 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const generateRoutes = async () => {
+    const flatRouteDate = flatRoutes(dynamicRoutes)
     const currentRoute = {
       ...rootRoute,
-      children: dynamicRoutes,
+      children: [flatRouteDate],
     }
     routerRecords.value = dynamicRoutes
 
@@ -64,7 +65,11 @@ export const useUserStore = defineStore('user', () => {
 
   const generateDynamicRoutes = async () => {
     const routeData = await generateRoute()
-    if (routeData) routerRecords.value = routeData.children
+    if (routeData) {
+      routerRecords.value = routeData.children
+      const flatRouteDate = flatRoutes(routeData.children)
+      routeData.children = [flatRouteDate]
+    }
 
     return routeData
   }

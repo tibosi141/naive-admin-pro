@@ -1,6 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
+import { omit } from 'lodash-es'
 import modules from './modules'
-import { rootRoute } from './dynamic-routes'
+import { ROOT_ROUTE_REDIRECT_PATH, rootRoute } from './dynamic-routes'
 import type { MenuInfo } from '~/apis/user'
 import { userGetMenusApi } from '~/apis/user'
 
@@ -47,11 +48,37 @@ const generate = (menus: MenuInfo[], pid?: number): RouteRecordRaw[] => {
   return routes
 }
 
+const flatRouteData = (routes: RouteRecordRaw[]) => {
+  const flatRoutes: RouteRecordRaw[] = []
+
+  for (const route of routes) {
+    flatRoutes.push(omit(route, 'children') as RouteRecordRaw)
+    if (route.children && route.children.length > 0)
+      flatRoutes.push(...flatRouteData(route.children))
+  }
+
+  return flatRoutes
+}
+
+export const flatRoutes = (routes: RouteRecordRaw[]) => {
+  const flatRoute: RouteRecordRaw = {
+    path: '/',
+    name: 'root',
+    component: defaultRoutes.RouteView,
+    redirect: ROOT_ROUTE_REDIRECT_PATH,
+    children: [],
+  }
+  flatRoute.children = flatRouteData(routes)
+
+  return flatRoute
+}
+
 export const generateRoute = async () => {
   const { data } = await userGetMenusApi()
 
   if (data) {
     const routes = generate(data)
+
     return {
       ...rootRoute,
       children: routes,

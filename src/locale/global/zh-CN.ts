@@ -34,6 +34,13 @@ export default {
   'pages.dashboard.analysis.title': '分析页',
   'pages.dashboard.workspace.title': '访问量',
   'pages.jump.baidu': '跳转百度',
+  'pages.menu.title': '菜单',
+  'pages.menu.menu1.title': '菜单1',
+  'pages.menu.menu2.title': '菜单2',
+  'pages.menu.menu21.title': '菜单2-1',
+  'pages.menu.menu22.title': '菜单2-2',
+  'pages.menu.menu11.title': '菜单1-1',
+  'pages.menu.menu12.title': '菜单1-2',
   // 标签页多语言配置
   'tabs.menu.close': '关闭当前标签页',
   'tabs.menu.refresh': '刷新当前页',

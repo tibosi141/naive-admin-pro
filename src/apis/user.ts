@@ -37,7 +37,8 @@ export interface MenuInfo {
 export const userLoginUrl = '/user/login'
 export const userSendCodeUrl = 'user/send-code'
 export const userGetInfoUrl = '/user/info'
-export const userMenusUrl = '/user/menu-lang'
+export const userMenusUrl = '/user/menus1'
+// export const userMenusUrl = '/user/menu-lang'
 
 export interface UserAccountLoginParams {
   username: IncludeNull<string>

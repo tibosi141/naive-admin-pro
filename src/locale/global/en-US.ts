@@ -34,6 +34,13 @@ export default {
   'pages.dashboard.analysis.title': 'Analysis',
   'pages.dashboard.workspace.title': 'Workspace',
   'pages.jump.baidu': 'Jump to Baidu',
+  'pages.menu.title': 'Menu',
+  'pages.menu.menu1.title': 'Menu1',
+  'pages.menu.menu2.title': 'Menu2',
+  'pages.menu.menu21.title': 'Menu2-1',
+  'pages.menu.menu22.title': 'Menu2-2',
+  'pages.menu.menu11.title': 'Menu1-1',
+  'pages.menu.menu12.title': 'Menu1-2',
   // 标签页多语言配置
   'tabs.menu.close': 'Close the current TAB',
   'tabs.menu.refresh': 'Refreshing the current page',
