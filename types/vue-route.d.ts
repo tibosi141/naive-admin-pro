@@ -7,5 +7,6 @@ declare module 'vue-router' {
     title?: string
     icon?: string
     target?: '_blank' | '_self' | '_parent' | '_top'
+    keepAlive?: boolean
   }
 }

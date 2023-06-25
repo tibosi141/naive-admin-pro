@@ -36,6 +36,7 @@ const generate = (menus: MenuInfo[], pid?: number): RouteRecordRaw[] => {
         pid: menuItem.pid,
         title: menuItem.title,
         icon: menuItem.icon,
+        keepAlive: menuItem.keepAlive,
       },
       children: generate(menus, menuItem.id),
     }
