@@ -28,6 +28,9 @@ devDependencies:
   '@mistjs/eslint-config-vue':
     specifier: ^0.0.5
     version: 0.0.5(eslint@8.39.0)(typescript@5.0.2)
+  '@mistjs/eslint-config-vue-jsx':
+    specifier: ^0.0.7
+    version: 0.0.7(eslint@8.39.0)(prettier@2.8.8)(typescript@5.0.2)
   '@types/lodash-es':
     specifier: ^4.17.7
     version: 4.17.7
@@ -811,6 +814,25 @@ packages:
       - supports-color
     dev: true
 
+  /@mistjs/eslint-config-vue-jsx@0.0.7(eslint@8.39.0)(prettier@2.8.8)(typescript@5.0.2):
+    resolution: {integrity: sha512-vE9qfNHMr2bAbbcdRoFsoMtRiZaVg5MGTq/VtRj5bebWZvitY5rCUCuJQIhG7pujwqwG0bNxf1GF2SgR7jNxOg==}
+    peerDependencies:
+      eslint: '>=7.4.0'
+      prettier: '>=2.8.0'
+    dependencies:
+      '@mistjs/eslint-config-vue': 0.0.5(eslint@8.39.0)(typescript@5.0.2)
+      '@vue/eslint-config-prettier': 7.1.0(eslint@8.39.0)(prettier@2.8.8)
+      eslint: 8.39.0
+      eslint-plugin-prettier: 4.2.1(eslint-config-prettier@8.8.0)(eslint@8.39.0)(prettier@2.8.8)
+      prettier: 2.8.8
+    transitivePeerDependencies:
+      - eslint-config-prettier
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+      - typescript
+    dev: true
+
   /@mistjs/eslint-config-vue@0.0.5(eslint@8.39.0)(typescript@5.0.2):
     resolution: {integrity: sha512-lyQsreg+aLDHDRh9bT/osUviSWyO1xd1kkJZ+Q0tvvuPfgfRQyc6t6Vno1wWXARMD2Dcv836db5Y+Q745xzQSQ==}
     peerDependencies:
@@ -1248,7 +1270,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.5
       '@babel/plugin-transform-typescript': 7.22.5(@babel/core@7.22.5)
-      '@vue/babel-plugin-jsx': 1.1.2(@babel/core@7.22.5)
+      '@vue/babel-plugin-jsx': 1.1.3(@babel/core@7.22.5)
       vite: 4.3.0(@types/node@18.16.0)
       vue: 3.2.47
     transitivePeerDependencies:
@@ -1305,12 +1327,12 @@ packages:
       '@volar/vue-language-core': 1.2.0
     dev: true
 
-  /@vue/babel-helper-vue-transform-on@1.1.2:
-    resolution: {integrity: sha512-CKdDLTYS02f8FDjfN1pWWzeu+G20r2ckVACu3sgNE5AJiGZVSGsidikADKoWvhGoYKKSWnMR+tPuqjkrO99icQ==}
+  /@vue/babel-helper-vue-transform-on@1.1.3:
+    resolution: {integrity: sha512-iSaE7+1+/tPp79XnvsAVjaCjuY7dHjfsArPozi+1USJ1A5lf5JUovCP90Hbc+L9BUSHGlXMEYuQrL2vS3Yz9ow==}
     dev: true
 
-  /@vue/babel-plugin-jsx@1.1.2(@babel/core@7.22.5):
-    resolution: {integrity: sha512-RHQtiT1yq+MVJVEDSXVtyxvA6b/ywEU3LNekmq3HuQFAICtMOcsnkxrN8frw0GEo1L5IhA5Dpp3dk/t8m08pUg==}
+  /@vue/babel-plugin-jsx@1.1.3(@babel/core@7.22.5):
+    resolution: {integrity: sha512-q4ekWt6KcWmM7GNTZjBO53EOM/5uczu7q1Ks39Sz0d0PJFJ+oNi6xyu17WZ/uoSi/s81ouq99G18cLoEX9X1OA==}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -1320,7 +1342,7 @@ packages:
       '@babel/template': 7.22.5
       '@babel/traverse': 7.22.5
       '@babel/types': 7.22.5
-      '@vue/babel-helper-vue-transform-on': 1.1.2
+      '@vue/babel-helper-vue-transform-on': 1.1.3
       camelcase: 6.3.0
       html-tags: 3.3.1
       svg-tags: 1.0.0
@@ -1365,6 +1387,18 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
     dev: false
+
+  /@vue/eslint-config-prettier@7.1.0(eslint@8.39.0)(prettier@2.8.8):
+    resolution: {integrity: sha512-Pv/lVr0bAzSIHLd9iz0KnvAr4GKyCEl+h52bc4e5yWuDVtLgFwycF7nrbWTAQAS+FU6q1geVd07lc6EWfJiWKQ==}
+    peerDependencies:
+      eslint: '>= 7.28.0'
+      prettier: '>= 2.0.0'
+    dependencies:
+      eslint: 8.39.0
+      eslint-config-prettier: 8.8.0(eslint@8.39.0)
+      eslint-plugin-prettier: 4.2.1(eslint-config-prettier@8.8.0)(eslint@8.39.0)(prettier@2.8.8)
+      prettier: 2.8.8
+    dev: true
 
   /@vue/reactivity-transform@3.2.47:
     resolution: {integrity: sha512-m8lGXw8rdnPVVIdIFhf0LeQ/ixyHkH5plYuS83yop5n7ggVJU+z5v0zecwEnX7fa7HNLBhh2qngJJkxpwEEmYA==}
@@ -2089,6 +2123,15 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /eslint-config-prettier@8.8.0(eslint@8.39.0):
+    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.39.0
+    dev: true
+
   /eslint-config-standard@17.0.0-1(eslint-plugin-import@2.27.5)(eslint-plugin-n@14.0.0)(eslint-plugin-promise@6.1.1)(eslint@8.39.0):
     resolution: {integrity: sha512-aqRG58dqoBNfOLN+PsitasxmW+W9Os4oQrx081B16T4E4WogsSbpUL6hnKSnyv35sSRYA2XjBtKMOrUboL6jgw==}
     peerDependencies:
@@ -2241,6 +2284,23 @@ packages:
       minimatch: 3.1.2
       resolve: 1.22.2
       semver: 6.3.0
+    dev: true
+
+  /eslint-plugin-prettier@4.2.1(eslint-config-prettier@8.8.0)(eslint@8.39.0)(prettier@2.8.8):
+    resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      eslint: '>=7.28.0'
+      eslint-config-prettier: '*'
+      prettier: '>=2.0.0'
+    peerDependenciesMeta:
+      eslint-config-prettier:
+        optional: true
+    dependencies:
+      eslint: 8.39.0
+      eslint-config-prettier: 8.8.0(eslint@8.39.0)
+      prettier: 2.8.8
+      prettier-linter-helpers: 1.0.0
     dev: true
 
   /eslint-plugin-promise@6.1.1(eslint@8.39.0):
@@ -2482,6 +2542,10 @@ packages:
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+    dev: true
+
+  /fast-diff@1.3.0:
+    resolution: {integrity: sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==}
     dev: true
 
   /fast-glob@3.2.12:
@@ -3658,6 +3722,19 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier-linter-helpers@1.0.0:
+    resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      fast-diff: 1.3.0
+    dev: true
+
+  /prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /proxy-from-env@1.1.0:
