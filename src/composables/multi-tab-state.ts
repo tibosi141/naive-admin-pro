@@ -31,6 +31,7 @@ export const useMultiTab = () => {
   const state = useMultiTabInject()
   const tabList = computed(() => state.tabList)
   const current = computed(() => state.current)
+  const componentCache = toRaw(state.componentCache)
   const route = useRoute()
   const router = useRouter()
   const { t } = useI18n()
@@ -68,9 +69,11 @@ export const useMultiTab = () => {
     }
     // 获取当前页面的索引地址
     const currentIndex = tabList.value.findIndex(item => item.path === path)
+    const currentItem = tabList.value[currentIndex]
     // 判断当前页面是否不是当前选中的页面，如果不是就直接删除
     if (path !== current.value) {
       state.tabList.splice(currentIndex, 1)
+      componentCache[currentItem.key!] && delete componentCache[currentItem.key!]
       return
     }
     // 如果删除的是当前页面，那么我们就需要处理一下，
@@ -81,16 +84,20 @@ export const useMultiTab = () => {
       .replace(state.tabList[targetIndex].route)
       .then(() => {
         state.tabList.splice(currentIndex, 1)
+        componentCache[currentItem.key!] && delete componentCache[currentItem.key!]
       })
       .catch(() => {})
   }
 
   const refreshTag = (path?: string) => {
     if (!path) path = current.value
+    const currentIndex = tabList.value.findIndex(item => item.path === path)
+    const currentItem = tabList.value[currentIndex]
+    state.tabList[currentIndex] = { ...toRaw(currentItem), key: state.guid() }
+    componentCache[currentItem.key!] && delete componentCache[currentItem.key!]
+
     router
-      .replace({
-        path: `/redirect/${path}`,
-      })
+      .replace(currentItem.route)
       .then(() => {})
       .catch(() => {})
   }
