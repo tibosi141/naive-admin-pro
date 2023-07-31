@@ -5,11 +5,15 @@ import { MULTI_TAB_STATE_KEY } from '~/layouts/multi-tab/type'
 import { hasLoginAllowRoutes } from '~/routes/router-guard'
 
 export const useMultiTabProvider = () => {
+  let g = 0
+  const guid = () => `CacheTab_${++g}`
   const state = reactive<MultiTabState>({
     // tab列表
     tabList: [],
     // 选中的数据
     current: '',
+    guid,
+    componentCache: {},
   })
 
   provide(MULTI_TAB_STATE_KEY, state)
@@ -103,7 +107,7 @@ export const useMultiTab = () => {
       }
       else {
         // 如果tab不存在的情况，我们就需要添加tab
-        addTab(route)
+        // addTab(route)
       }
     },
     {

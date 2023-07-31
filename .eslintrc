@@ -1,6 +1,7 @@
 {
   "extends": "@mistjs/eslint-config-vue",
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "vue/one-component-per-file": "off"
   }
 }
