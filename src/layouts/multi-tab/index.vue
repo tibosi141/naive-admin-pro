@@ -10,7 +10,7 @@ const { tabList, current, closeTab, refreshTag } = useMultiTab()
 const menuDropdown = reactive({
   x: 0,
   y: 0,
-  show: false,
+  show: false
 })
 
 const dropdownOptions = computed<DropdownOption[]>(() => [
@@ -18,12 +18,12 @@ const dropdownOptions = computed<DropdownOption[]>(() => [
     label: t('tabs.menu.close'),
     key: 'closeCurrent',
     // 如果当前只剩下一页的话，我们是不允许关闭的，所以我们就通过计算属性的方式来处理
-    disabled: tabList.value.length <= 1,
+    disabled: tabList.value.length <= 1
   },
   {
     label: t('tabs.menu.refresh'),
-    key: 'refreshCurrent',
-  },
+    key: 'refreshCurrent'
+  }
 ])
 
 const handleContextMenu = (e: MouseEvent) => {

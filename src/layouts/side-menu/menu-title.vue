@@ -3,10 +3,10 @@ import type { RouteRecordRaw } from 'vue-router'
 
 const props = defineProps<{ route: RouteRecordRaw }>()
 
-const title = computed(() => (props.route.meta?.title as string))
+const title = computed(() => props.route.meta?.title as string)
 const path = computed(() => props.route.path)
 const hasChildren = computed(
-  () => props.route.children && props.route.children.length > 0,
+  () => props.route.children && props.route.children.length > 0
 )
 const isFullPath = computed(() => props.route.path.startsWith('http'))
 const target = computed(() => props.route.meta?.target ?? '_blank')

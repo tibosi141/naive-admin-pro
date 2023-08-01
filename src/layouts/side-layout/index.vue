@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { LayoutBase, LayoutContent, LayoutHeader, LayoutSider, Logo, Title } from '../common'
+import {
+  LayoutBase,
+  LayoutContent,
+  LayoutHeader,
+  LayoutSider,
+  Logo,
+  Title
+} from '../common'
 
 const props = withDefaults(
   defineProps<{
@@ -17,8 +24,8 @@ const props = withDefaults(
     siderWidth: 240,
     siderCollapsedWidth: 48,
     inverted: false,
-    collapsed: false,
-  },
+    collapsed: false
+  }
 )
 
 defineEmits(['update:collapsed'])

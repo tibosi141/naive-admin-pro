@@ -6,14 +6,16 @@ export const useAutoDark = () => {
   const isPrefersDark = usePreferredDark()
   const appStore = useAppStore()
 
-  watch(isPrefersDark, (newVal) => {
-    if (newVal)
-      appStore.updateLayoutStyle('dark')
-    else
-      appStore.updateLayoutStyle('light')
+  watch(
+    isPrefersDark,
+    (newVal) => {
+      if (newVal) appStore.updateLayoutStyle('dark')
+      else appStore.updateLayoutStyle('light')
 
-    toggleDark(newVal)
-  }, {
-    immediate: true,
-  })
+      toggleDark(newVal)
+    },
+    {
+      immediate: true
+    }
+  )
 }

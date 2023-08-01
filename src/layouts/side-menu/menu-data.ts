@@ -3,7 +3,7 @@ import { NIcon } from 'naive-ui'
 import {
   SaveFilled as BookIcon,
   PhoneFilled as PersonIcon,
-  WalletFilled as WineIcon,
+  WalletFilled as WineIcon
 } from '@vicons/antd'
 
 function renderIcon(icon: Component) {
@@ -14,7 +14,7 @@ export const menuOptions: MenuOption[] = [
   {
     label: '且听风吟',
     key: 'hear-the-wind-sing',
-    icon: renderIcon(BookIcon),
+    icon: renderIcon(BookIcon)
   },
   {
     label: '1973年的弹珠玩具',
@@ -24,15 +24,15 @@ export const menuOptions: MenuOption[] = [
     children: [
       {
         label: '鼠',
-        key: 'rat',
-      },
-    ],
+        key: 'rat'
+      }
+    ]
   },
   {
     label: '寻羊冒险记',
     key: 'a-wild-sheep-chase',
     disabled: true,
-    icon: renderIcon(BookIcon),
+    icon: renderIcon(BookIcon)
   },
   {
     label: '舞，舞，舞',
@@ -47,14 +47,14 @@ export const menuOptions: MenuOption[] = [
           {
             label: '叙事者',
             key: 'narrator',
-            icon: renderIcon(PersonIcon),
+            icon: renderIcon(PersonIcon)
           },
           {
             label: '羊男',
             key: 'sheep-man',
-            icon: renderIcon(PersonIcon),
-          },
-        ],
+            icon: renderIcon(PersonIcon)
+          }
+        ]
       },
       {
         label: '饮品',
@@ -63,9 +63,9 @@ export const menuOptions: MenuOption[] = [
         children: [
           {
             label: '威士忌',
-            key: 'whisky',
-          },
-        ],
+            key: 'whisky'
+          }
+        ]
       },
       {
         label: '食物',
@@ -73,14 +73,14 @@ export const menuOptions: MenuOption[] = [
         children: [
           {
             label: '三明治',
-            key: 'sandwich',
-          },
-        ],
+            key: 'sandwich'
+          }
+        ]
       },
       {
         label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  },
+        key: 'the-past-increases-the-future-recedes'
+      }
+    ]
+  }
 ]

@@ -11,32 +11,32 @@ export const useAccountLogin = () => {
 
   const model = reactive<UserAccountLoginParams>({
     username: null,
-    password: null,
+    password: null
   })
 
   const rules: FormRules = {
     username: [
       {
         required: true,
-        renderMessage: () => t('login.username.required'),
+        renderMessage: () => t('login.username.required')
       },
       {
         min: 5,
         max: 20,
-        renderMessage: () => t('login.username.length'),
-      },
+        renderMessage: () => t('login.username.length')
+      }
     ],
     password: [
       {
         required: true,
-        renderMessage: () => t('login.password.required'),
+        renderMessage: () => t('login.password.required')
       },
       {
         min: 5,
         max: 20,
-        renderMessage: () => t('login.password.length'),
-      },
-    ],
+        renderMessage: () => t('login.password.length')
+      }
+    ]
   }
 
   const login = async () => {
@@ -53,8 +53,7 @@ export const useAccountLogin = () => {
       // 5.跳转到首页
       const redirect = router.currentRoute.value.params.redirect as string
       await router.replace(redirect || '/')
-    }
-    catch (err) {
+    } catch (err) {
       loading.value = false
     }
   }
@@ -64,6 +63,6 @@ export const useAccountLogin = () => {
     loading,
     model,
     rules,
-    login,
+    login
   }
 }

@@ -10,8 +10,8 @@ const props = withDefaults(
   }>(),
   {
     headerHeight: 48,
-    inverted: false,
-  },
+    inverted: false
+  }
 )
 
 const headerHeightVar = computed(() => `${props.headerHeight}px`)

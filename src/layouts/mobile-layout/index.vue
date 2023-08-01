@@ -17,8 +17,8 @@ const props = withDefaults(
     headerInverted: false,
     drawerInverted: true,
     visible: false,
-    logoVisible: true,
-  },
+    logoVisible: true
+  }
 )
 
 const emit = defineEmits(['update:visible'])

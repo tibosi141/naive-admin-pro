@@ -7,6 +7,6 @@ export default {
   ...pages,
   naiveUI: {
     locale: zhCN,
-    dateLocale: dateZhCN,
-  },
+    dateLocale: dateZhCN
+  }
 }

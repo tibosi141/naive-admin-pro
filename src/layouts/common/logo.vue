@@ -5,8 +5,8 @@ withDefaults(
     size?: number | string
   }>(),
   {
-    size: 24,
-  },
+    size: 24
+  }
 )
 </script>
 

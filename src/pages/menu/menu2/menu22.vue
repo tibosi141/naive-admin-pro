@@ -9,6 +9,4 @@ console.log('menu22')
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

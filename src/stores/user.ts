@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import type {
   UserAccountLoginParams,
   UserInfo,
-  UserMobileLoginParams,
+  UserMobileLoginParams
 } from '~/apis/user'
 import { userGetInfoApi, userLoginApi } from '~/apis/user'
 import i18n from '~/locale'
@@ -27,7 +27,7 @@ export const useUserStore = defineStore('user', () => {
   const menusData = computed(() => generateMenu(routerRecords.value ?? []))
 
   const login = async (
-    params: UserAccountLoginParams | UserMobileLoginParams,
+    params: UserAccountLoginParams | UserMobileLoginParams
   ) => {
     const { data } = await userLoginApi(params)
 
@@ -47,8 +47,8 @@ export const useUserStore = defineStore('user', () => {
     await router.replace({
       path: '/login',
       query: {
-        redirect: router.currentRoute.value.path,
-      },
+        redirect: router.currentRoute.value.path
+      }
     })
   }
 
@@ -56,7 +56,7 @@ export const useUserStore = defineStore('user', () => {
     const flatRouteDate = flatRoutes(dynamicRoutes)
     const currentRoute = {
       ...rootRoute,
-      children: [flatRouteDate],
+      children: [flatRouteDate]
     }
     routerRecords.value = dynamicRoutes
 
@@ -83,6 +83,6 @@ export const useUserStore = defineStore('user', () => {
     getUserInfo,
     logout,
     generateRoutes,
-    generateDynamicRoutes,
+    generateDynamicRoutes
   }
 })

@@ -7,13 +7,13 @@ const props = withDefaults(
     title?: string
   }>(),
   {
-    size: 20,
-  },
+    size: 20
+  }
 )
 
 const titleStyle = computed<CSSProperties>(() => {
   return {
-    fontSize: `${props.size}px`,
+    fontSize: `${props.size}px`
   }
 })
 </script>

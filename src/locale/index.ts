@@ -13,8 +13,8 @@ const i18n = createI18n({
   // 找不到当前设置的多语言时使用该多语言
   fallbackLocale: defaultLocale,
   messages: {
-    'zh-CN': zhCN,
-  },
+    'zh-CN': zhCN
+  }
 })
 
 export const loadLanguageAsync = async (locale: string = defaultLocale) => {
@@ -25,8 +25,7 @@ export const loadLanguageAsync = async (locale: string = defaultLocale) => {
 
     const messages = await import(`./lang/${locale}.ts`)
     messages && i18n.global.setLocaleMessage(locale, messages.default)
-  }
-  catch (err) {
+  } catch (err) {
     console.warn('load language error', err)
   }
 

@@ -10,25 +10,25 @@ withDefaults(
   }>(),
   {
     maxCount: 99,
-    count: 0,
-  },
+    count: 0
+  }
 )
 
 const options = ref<DropdownOption[]>([
   {
     key: 'content',
     type: 'render',
-    render: () => h(Content),
+    render: () => h(Content)
   },
   {
     key: 'header-divider',
-    type: 'divider',
+    type: 'divider'
   },
   {
     key: 'footer',
     type: 'render',
-    render: () => h(Footer),
-  },
+    render: () => h(Footer)
+  }
 ])
 </script>
 

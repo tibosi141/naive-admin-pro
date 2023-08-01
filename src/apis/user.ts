@@ -61,7 +61,7 @@ export interface UserLoginResult {
 export type UserSendCodeParams = Pick<UserMobileLoginParams, 'mobile'>
 
 export const userLoginApi = (
-  params: UserAccountLoginParams | UserMobileLoginParams,
+  params: UserAccountLoginParams | UserMobileLoginParams
 ) => {
   return usePost<
     UserAccountLoginParams | UserMobileLoginParams,

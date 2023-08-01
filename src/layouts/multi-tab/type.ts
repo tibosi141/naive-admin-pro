@@ -20,4 +20,5 @@ export interface MultiTabState {
 }
 
 // 其中接收一个泛型，我们把我们自己定义的类型给他传入进去
-export const MULTI_TAB_STATE_KEY: InjectionKey<MultiTabState> = Symbol('multiTabState')
+export const MULTI_TAB_STATE_KEY: InjectionKey<MultiTabState> =
+  Symbol('multiTabState')

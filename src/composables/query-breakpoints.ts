@@ -3,7 +3,7 @@ export const breakpointsEnum = {
   lg: 1199,
   md: 991,
   sm: 767,
-  xs: 575,
+  xs: 575
 }
 
 export const useQueryBreakpoints = () => {

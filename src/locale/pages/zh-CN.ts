@@ -22,5 +22,5 @@ export default {
   'login.forgot-password': '忘记密码',
   'login.sign-in-with': '其他登录方式：',
   'login.signup': '注册账户',
-  'login.login': '登录',
+  'login.login': '登录'
 }

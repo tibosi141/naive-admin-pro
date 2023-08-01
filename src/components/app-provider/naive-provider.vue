@@ -8,7 +8,7 @@ useGlobalConfigProvider({
   dialog,
   message,
   notification,
-  loadingBar,
+  loadingBar
 })
 </script>
 

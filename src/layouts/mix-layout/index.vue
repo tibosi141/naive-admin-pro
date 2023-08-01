@@ -5,7 +5,7 @@ import {
   LayoutHeader,
   LayoutSider,
   Logo,
-  Title,
+  Title
 } from '../common'
 import SideMenu from '../side-menu/index.vue'
 
@@ -28,8 +28,8 @@ const props = withDefaults(
     siderWidth: 240,
     siderCollapsedWidth: 48,
     collapsed: false,
-    collapsedIconSize: 22,
-  },
+    collapsedIconSize: 22
+  }
 )
 
 defineEmits(['update:collapsed', 'update:active', 'update:expandedKeys'])

@@ -11,7 +11,8 @@ import WrapContent from './wrap-content.vue'
 const appStore = useAppStore()
 const userStore = useUserStore()
 const menuOptions = computed(() => userStore.menusData)
-const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
+const { layout, visible, layoutList, layoutStyleList, themeList } =
+  storeToRefs(appStore)
 const { isMobile, isDesktop, isPad } = useQueryBreakpoints()
 const { active } = useMenuStateInject()
 

@@ -9,7 +9,7 @@ export const generateMenu = (routes: RouteRecordRaw[]) => {
   for (const route of routes) {
     const currentMenu: MenuOption = {
       key: route.path,
-      label: () => h(MenuTitle, { route }),
+      label: () => h(MenuTitle, { route })
     }
     if (route.meta?.icon)
       currentMenu.icon = () => h(MenuIcon, { icon: route.meta?.icon as string })

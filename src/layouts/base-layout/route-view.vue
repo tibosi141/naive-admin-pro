@@ -10,6 +10,4 @@ import { MultiTabConsumer } from '../multi-tab/multi-tab-consumer'
   </router-view>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

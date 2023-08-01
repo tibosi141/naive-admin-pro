@@ -3,7 +3,7 @@ import {
   GithubOutlined,
   LockOutlined,
   MobileOutlined,
-  UserOutlined,
+  UserOutlined
 } from '@vicons/antd'
 import { useAccountLogin } from './composables/account-login'
 import { useMobileLogin } from './composables/mobile-login'
@@ -18,7 +18,7 @@ const {
   mModel,
   mRules,
   sendCode,
-  mLogin,
+  mLogin
 } = useMobileLogin()
 </script>
 
@@ -26,7 +26,7 @@ const {
   <BlankLayout>
     <div flex="~ col" class="py-20px items-center justify-center">
       <div class="flex items-center">
-        <img src="@/assets/vue.svg" class="w-40px h-40px">
+        <img src="@/assets/vue.svg" class="w-40px h-40px" />
         <span class="ml-3 text-33px font-600">Naive Admin Pro</span>
       </div>
       <div
@@ -133,8 +133,8 @@ const {
                     countState
                       ? `${counter}s${$t('login.mobile.resend')}`
                       : $t(
-                        'login.mobile.verification-code.get-verification-code',
-                      )
+                          'login.mobile.verification-code.get-verification-code'
+                        )
                   }}
                 </n-button>
               </n-input-group>

@@ -8,7 +8,7 @@ export const rootRoute: RouteRecordRaw = {
   name: 'Default Route',
   component: Layout,
   redirect: ROOT_ROUTE_REDIRECT_PATH,
-  children: [],
+  children: []
 }
 
 export const dynamicRoutes: RouteRecordRaw[] = [
@@ -22,9 +22,9 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         name: 'Home',
         component: () => import('~/pages/index.vue'),
         meta: {
-          title: 'Home',
-        },
-      },
-    ],
-  },
+          title: 'Home'
+        }
+      }
+    ]
+  }
 ]

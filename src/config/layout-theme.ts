@@ -31,5 +31,5 @@ export const layoutThemeConfig: LayoutTheme = {
   siderCollapsedWidth: 48,
   showSiderTrigger: 'bar',
   collapsed: false,
-  theme: 'default',
+  theme: 'default'
 }

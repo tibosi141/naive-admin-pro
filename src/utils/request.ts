@@ -2,7 +2,7 @@ import type {
   AxiosError,
   AxiosRequestConfig,
   AxiosResponse,
-  InternalAxiosRequestConfig,
+  InternalAxiosRequestConfig
 } from 'axios'
 import axios from 'axios'
 import i18n from '~/locale'
@@ -16,11 +16,11 @@ interface ResponseBody<T> {
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API ?? '/',
-  timeout: 6000,
+  timeout: 6000
 })
 
 const requestHandler = async (
-  config: InternalAxiosRequestConfig,
+  config: InternalAxiosRequestConfig
 ): Promise<InternalAxiosRequestConfig> => {
   const token = useAuthorization()
 
@@ -33,7 +33,7 @@ const requestHandler = async (
 }
 
 const responseHandler = (
-  response: AxiosResponse,
+  response: AxiosResponse
 ): ResponseBody<any> | AxiosResponse<any> | Promise<any> | any => {
   return response.data
 }
@@ -51,7 +51,7 @@ const errorHandler = (error: AxiosError): Promise<any> => {
       notification?.error({
         title: i18n.global.t('global.request.error.401'),
         content: data?.msg || statusText,
-        duration: 3000,
+        duration: 3000
       })
 
       /**
@@ -62,33 +62,30 @@ const errorHandler = (error: AxiosError): Promise<any> => {
         .replace({
           path: '/login',
           query: {
-            redirect: router.currentRoute.value.path,
-          },
+            redirect: router.currentRoute.value.path
+          }
         })
         .then(() => {})
-    }
-    else if (status === 403) {
+    } else if (status === 403) {
       // 资源请求错误
       notification?.error({
         title: i18n.global.t('global.request.error.403'),
         content: data?.msg || statusText,
-        duration: 3000,
+        duration: 3000
       })
-    }
-    else if (status === 500) {
+    } else if (status === 500) {
       // 服务器错误
       notification?.error({
         title: i18n.global.t('global.request.error.500'),
         content: data?.msg || statusText,
-        duration: 3000,
+        duration: 3000
       })
-    }
-    else {
+    } else {
       // 其他错误
       notification?.error({
         title: i18n.global.t('global.request.error.other'),
         content: data?.msg || statusText,
-        duration: 3000,
+        duration: 3000
       })
     }
   }
@@ -104,51 +101,51 @@ export default instance
 export const useGet = <P = any, R = any>(
   url: string,
   params?: P,
-  config?: AxiosRequestConfig,
+  config?: AxiosRequestConfig
 ): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     method: 'GET',
     params,
-    ...config,
+    ...config
   })
 }
 
 export const usePost = <P = any, R = any>(
   url: string,
   data?: P,
-  config?: AxiosRequestConfig,
+  config?: AxiosRequestConfig
 ): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     method: 'POST',
     data,
-    ...config,
+    ...config
   })
 }
 
 export const usePut = <P = any, R = any>(
   url: string,
   data?: P,
-  config?: AxiosRequestConfig,
+  config?: AxiosRequestConfig
 ): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     method: 'PUT',
     data,
-    ...config,
+    ...config
   })
 }
 
 export const useDelete = <P = any, R = any>(
   url: string,
   data?: P,
-  config?: AxiosRequestConfig,
+  config?: AxiosRequestConfig
 ): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     method: 'DELETE',
     data,
-    ...config,
+    ...config
   })
 }

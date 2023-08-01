@@ -20,22 +20,22 @@ const userOptions = ref<DropdownOption[]>([
   {
     key: 'user-center',
     label: () => t('global.layout.header.right.user.center'),
-    icon: () => renderIcon(UserOutlined),
+    icon: () => renderIcon(UserOutlined)
   },
   {
     key: 'user-setting',
     label: () => t('global.layout.header.right.user.setting'),
-    icon: () => renderIcon(SettingOutlined),
+    icon: () => renderIcon(SettingOutlined)
   },
   {
     key: 'header-divider',
-    type: 'divider',
+    type: 'divider'
   },
   {
     key: 'logout',
     label: () => t('global.layout.header.right.logout'),
-    icon: () => renderIcon(LoginOutlined),
-  },
+    icon: () => renderIcon(LoginOutlined)
+  }
 ])
 
 const handleSelect = (key: string) => {

@@ -1,5 +1,5 @@
 {
-  "extends": "@mistjs/eslint-config-vue",
+  "extends": "@mistjs/eslint-config-vue-jsx",
   "rules": {
     "no-console": "off",
     "vue/one-component-per-file": "off"

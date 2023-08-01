@@ -7,5 +7,5 @@ export default {
   Menu11,
   Menu12,
   Menu21,
-  Menu22,
+  Menu22
 }

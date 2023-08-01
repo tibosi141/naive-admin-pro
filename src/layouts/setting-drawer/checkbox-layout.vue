@@ -11,8 +11,8 @@ const props = withDefaults(
     dark?: boolean
   }>(),
   {
-    inverted: false,
-  },
+    inverted: false
+  }
 )
 defineEmits(['click'])
 
@@ -35,7 +35,7 @@ const siderClass = computed(() => {
   if (props.layout === 'side') {
     list.push(
       'h-100%',
-      `bg-[var(--${(props.inverted || props.dark) ? 'inverted' : 'base'}-color)]`,
+      `bg-[var(--${props.inverted || props.dark ? 'inverted' : 'base'}-color)]`
     )
   }
 

@@ -16,7 +16,7 @@ const menuStateFn = (): MenuStateFn => {
   const route = useRoute()
   // 先定义类型
   const state = reactive<MenuState>({
-    active: '',
+    active: ''
   })
 
   // 创建更新方法
@@ -27,17 +27,19 @@ const menuStateFn = (): MenuStateFn => {
   // 当组件渲染完成后我们再进行执行watch监听
   tryOnMounted(() => {
     // 监听路由地址的变化
-    watch(() => route.path, () => {
-      // 我们排除路由为登录的时候的路由
-      if (route.path !== loginRoute)
-        updateActive(route.path)
-    })
+    watch(
+      () => route.path,
+      () => {
+        // 我们排除路由为登录的时候的路由
+        if (route.path !== loginRoute) updateActive(route.path)
+      }
+    )
   })
 
   // 最后我们解构抛出
   return {
     ...toRefs(state),
-    updateActive,
+    updateActive
   }
 }
 
@@ -52,7 +54,7 @@ export const useMenuStateInject = () => {
   return (
     useMenuState() ?? {
       active: ref(''),
-      updateActive: () => {},
+      updateActive: () => {}
     }
   )
 }

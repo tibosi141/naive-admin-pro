@@ -37,18 +37,18 @@ const useAppStore = defineStore('app', () => {
       {
         id: 'mix',
         key: 'mix',
-        title: 'global.layout.setting.drawer.layout.mix',
+        title: 'global.layout.setting.drawer.layout.mix'
       },
       {
         id: 'side',
         key: 'side',
-        title: 'global.layout.setting.drawer.layout.side',
+        title: 'global.layout.setting.drawer.layout.side'
       },
       {
         id: 'top',
         key: 'top',
-        title: 'global.layout.setting.drawer.layout.top',
-      },
+        title: 'global.layout.setting.drawer.layout.top'
+      }
     ]
   })
 
@@ -57,8 +57,8 @@ const useAppStore = defineStore('app', () => {
       {
         id: 'light',
         key: 'side',
-        title: 'global.layout.setting.drawer.style.light',
-      },
+        title: 'global.layout.setting.drawer.style.light'
+      }
     ]
 
     if (layout.layout !== 'mix') {
@@ -66,10 +66,9 @@ const useAppStore = defineStore('app', () => {
         id: 'inverted',
         key: 'side',
         title: 'global.layout.setting.drawer.style.inverted',
-        inverted: true,
+        inverted: true
       })
-    }
-    else {
+    } else {
       layout.layoutStyle !== 'dark' && updateLayoutStyle('light')
     }
 
@@ -77,7 +76,7 @@ const useAppStore = defineStore('app', () => {
       id: 'dark',
       key: 'side',
       title: 'global.layout.setting.drawer.style.dark',
-      dark: true,
+      dark: true
     })
 
     return list
@@ -103,7 +102,7 @@ const useAppStore = defineStore('app', () => {
       list.push({
         color: value.common?.primaryColor as string,
         key,
-        title: `global.layout.setting.drawer.theme.${key}`,
+        title: `global.layout.setting.drawer.theme.${key}`
       })
     }
 
@@ -114,13 +113,13 @@ const useAppStore = defineStore('app', () => {
     {
       key: 'zh-CN',
       label: '简体中文',
-      icon: () => '🇨🇳',
+      icon: () => '🇨🇳'
     },
     {
       key: 'en-US',
       label: 'English',
-      icon: () => 'us',
-    },
+      icon: () => 'us'
+    }
   ])
 
   watch(
@@ -128,7 +127,7 @@ const useAppStore = defineStore('app', () => {
     (newVal) => {
       if (newVal === 'dark') toggleDark(true)
       else toggleDark(false)
-    },
+    }
   )
 
   return {
@@ -144,7 +143,7 @@ const useAppStore = defineStore('app', () => {
     toggleCollapsed,
     updateLayout,
     updateLayoutStyle,
-    updateTheme,
+    updateTheme
   }
 })
 

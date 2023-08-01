@@ -10,6 +10,4 @@ const icon = computed(() => (icons as any)[props.icon])
   <n-icon :component="icon" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

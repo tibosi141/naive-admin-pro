@@ -19,8 +19,8 @@ const props = withDefaults(
   }>(),
   {
     floatTop: 240,
-    drawerWidth: 300,
-  },
+    drawerWidth: 300
+  }
 )
 defineEmits(['update:layout', 'update:layoutStyle', 'update:theme'])
 
@@ -33,7 +33,7 @@ const toggleDrawer = (val: boolean) => {
 const cssVars = computed(() => {
   return {
     '--pro-admin-float-top': `${props.floatTop}px`,
-    '--pro-admin-drawer-width': `${props.drawerWidth}px`,
+    '--pro-admin-drawer-width': `${props.drawerWidth}px`
   }
 })
 </script>

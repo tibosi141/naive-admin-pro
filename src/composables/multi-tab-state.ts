@@ -13,7 +13,7 @@ export const useMultiTabProvider = () => {
     // 选中的数据
     current: '',
     guid,
-    componentCache: {},
+    componentCache: {}
   })
 
   provide(MULTI_TAB_STATE_KEY, state)
@@ -42,7 +42,7 @@ export const useMultiTab = () => {
     const item: TabItem = {
       path: route.path,
       tabTitle: route.meta.title,
-      route: omit(route, ['matched']),
+      route: omit(route, ['matched'])
     }
     // 需要对不需要的路由进行过滤
     if (hasLoginAllowRoutes.includes(route.path)) return item
@@ -68,12 +68,13 @@ export const useMultiTab = () => {
       return
     }
     // 获取当前页面的索引地址
-    const currentIndex = tabList.value.findIndex(item => item.path === path)
+    const currentIndex = tabList.value.findIndex((item) => item.path === path)
     const currentItem = tabList.value[currentIndex]
     // 判断当前页面是否不是当前选中的页面，如果不是就直接删除
     if (path !== current.value) {
       state.tabList.splice(currentIndex, 1)
-      componentCache[currentItem.key!] && delete componentCache[currentItem.key!]
+      componentCache[currentItem.key!] &&
+        delete componentCache[currentItem.key!]
       return
     }
     // 如果删除的是当前页面，那么我们就需要处理一下，
@@ -84,14 +85,15 @@ export const useMultiTab = () => {
       .replace(state.tabList[targetIndex].route)
       .then(() => {
         state.tabList.splice(currentIndex, 1)
-        componentCache[currentItem.key!] && delete componentCache[currentItem.key!]
+        componentCache[currentItem.key!] &&
+          delete componentCache[currentItem.key!]
       })
       .catch(() => {})
   }
 
   const refreshTag = (path?: string) => {
     if (!path) path = current.value
-    const currentIndex = tabList.value.findIndex(item => item.path === path)
+    const currentIndex = tabList.value.findIndex((item) => item.path === path)
     const currentItem = tabList.value[currentIndex]
     state.tabList[currentIndex] = { ...toRaw(currentItem), key: state.guid() }
     componentCache[currentItem.key!] && delete componentCache[currentItem.key!]
@@ -107,19 +109,18 @@ export const useMultiTab = () => {
     () => {
       if (current.value !== route.path) state.current = route.path
 
-      const index = state.tabList.findIndex(item => item.path === route.path)
+      const index = state.tabList.findIndex((item) => item.path === route.path)
       // 为了防止路由信息发生变化，我们再重新存储一下路由信息
       if (state.tabList[index]) {
         state.tabList[index].route = omit(route, 'matched')
-      }
-      else {
+      } else {
         // 如果tab不存在的情况，我们就需要添加tab
         // addTab(route)
       }
     },
     {
-      immediate: true,
-    },
+      immediate: true
+    }
   )
 
   return {
@@ -127,6 +128,6 @@ export const useMultiTab = () => {
     current,
     addTab,
     closeTab,
-    refreshTag,
+    refreshTag
   }
 }

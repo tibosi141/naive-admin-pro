@@ -22,14 +22,13 @@ router.beforeEach(async (to, _, next) => {
       next({
         path: loginRoute,
         query: {
-          redirect: to.path,
-        },
+          redirect: to.path
+        }
       })
 
       return
     }
-  }
-  else {
+  } else {
     // 4. 如果存在，那么我们需要判断用户信息是否存在，如果不存在，就去获取用户信息
     if (!userStore.userInfo && !allowRoutes.includes(to.path)) {
       try {
@@ -48,29 +47,26 @@ router.beforeEach(async (to, _, next) => {
           next('/')
 
           return
-        }
-        else if (currentRoutes) {
+        } else if (currentRoutes) {
           router.addRoute(currentRoutes)
           next({
             ...to,
-            replace: true,
+            replace: true
           })
 
           return
         }
-      }
-      catch (err) {
+      } catch (err) {
         // 判断当前如果是401的错误让给请求拦截处理
         if (err instanceof AxiosError && err.response?.status === 401) {
           return
-        }
-        else {
+        } else {
           // 如果获取用户信息失败，那么我们直接阻止用户跳转即可
           next({
             path: '/error',
             query: {
-              redirect: to.path,
-            },
+              redirect: to.path
+            }
           })
 
           return
@@ -90,6 +86,7 @@ router.afterEach((to) => {
   if (title) {
     const localeTitle = i18n.global.t(title)
     document.title = `${localeTitle} - ${appStore.layout.title}`
+  } else if (appStore.layout.title) {
+    document.title = appStore.layout.title
   }
-  else if (appStore.layout.title) { document.title = appStore.layout.title }
 })

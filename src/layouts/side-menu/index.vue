@@ -2,7 +2,7 @@
 import { menuProps } from 'naive-ui'
 
 const props = defineProps({
-  ...menuProps,
+  ...menuProps
 })
 </script>
 

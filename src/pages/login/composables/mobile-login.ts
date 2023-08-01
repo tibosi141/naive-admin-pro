@@ -16,7 +16,7 @@ export const useMobileLogin = () => {
   const mModel = reactive<UserMobileLoginParams>({
     mobile: null,
     code: null,
-    type: 'mobile',
+    type: 'mobile'
   })
 
   const mRules = reactive<FormRules>({
@@ -24,25 +24,25 @@ export const useMobileLogin = () => {
       {
         key: 'mobile',
         required: true,
-        renderMessage: () => t('login.mobile.required'),
+        renderMessage: () => t('login.mobile.required')
       },
       {
         key: 'mobile',
         pattern: /^1[3456789]\d{9}$/,
-        renderMessage: () => t('login.mobile.rule'),
-      },
+        renderMessage: () => t('login.mobile.rule')
+      }
     ],
     code: [
       {
         required: true,
-        renderMessage: () => t('login.mobile.verification-code.required'),
+        renderMessage: () => t('login.mobile.verification-code.required')
       },
       {
         min: 6,
         max: 6,
-        renderMessage: () => t('login.mobile.verification-code.rule'),
-      },
-    ],
+        renderMessage: () => t('login.mobile.verification-code.rule')
+      }
+    ]
   })
 
   const startCount = () => {
@@ -60,14 +60,13 @@ export const useMobileLogin = () => {
   const sendCode = async () => {
     const msgIns = message.loading(t('login.mobile.verification-code.loading'))
     try {
-      await mFormRef.value?.validate(undefined, rule => rule.key === 'mobile')
+      await mFormRef.value?.validate(undefined, (rule) => rule.key === 'mobile')
       await userSendCodeApi({ mobile: mModel.mobile })
       countState.value = true
       msgIns.destroy()
       message.success(t('login.mobile.verification-code.success'))
       startCount()
-    }
-    catch (err) {
+    } catch (err) {
       msgIns.destroy()
     }
   }
@@ -83,8 +82,7 @@ export const useMobileLogin = () => {
 
       const redirect = router.currentRoute.value.params.redirect as string
       await router.replace(redirect || '/')
-    }
-    catch (err) {
+    } catch (err) {
       mLoading.value = false
     }
   }
@@ -97,6 +95,6 @@ export const useMobileLogin = () => {
     mModel,
     mRules,
     sendCode,
-    mLogin,
+    mLogin
   }
 }
