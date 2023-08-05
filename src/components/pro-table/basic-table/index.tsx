@@ -1,9 +1,22 @@
+import { NDataTable, dataTableProps } from 'naive-ui'
+
 const basicTable = defineComponent({
   name: 'BasicTable',
-  setup() {
+  props: {
+    ...dataTableProps
+  },
+  setup(props, { slots }) {
     const prefixCls = 'pro-table-basic-table'
     return () => {
-      return <div class={prefixCls}>BasicTable</div>
+      const tableSlots = {
+        empty: slots.empty,
+        loading: slots.loading
+      }
+      return (
+        <div class={prefixCls}>
+          <NDataTable {...props} v-slots={tableSlots}></NDataTable>
+        </div>
+      )
     }
   }
 })
